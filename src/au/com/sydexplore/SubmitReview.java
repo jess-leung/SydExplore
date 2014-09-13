@@ -49,6 +49,13 @@ public class SubmitReview extends Activity {
 		String reviewTitle = editReviewTitle.getText().toString(); 
 		float rating = editRating.getRating();
 		sendJson(username,reviewTitle,reviewText,rating);
+		
+		// Construct new intent to send data back 
+		Intent data = new Intent();
+	
+		// Activity finished OK, return the data
+		setResult(RESULT_OK, data); // set result code and bundle data for response
+		finish(); // closes the activity, pass data to parent
 	} 
 	
 	private void sendJson(final String username, final String reviewTitle, final String reviewText, final Float rating) {
