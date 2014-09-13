@@ -25,6 +25,10 @@
             </intent-filter>
         </activity>
         <activity
+      		android:name="au.com.sydexplore.ViewAttraction"
+      		android:label="@string/app_name">          
+ 		</activity>
+        <activity
       		android:name="au.com.sydexplore.SubmitReview"
       		android:label="@string/app_name">          
  		</activity>

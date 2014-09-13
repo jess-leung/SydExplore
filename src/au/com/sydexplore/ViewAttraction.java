@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends Activity {
+public class ViewAttraction extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
      */
     public void submitReview(View view) 
     {
-        Intent intent = new Intent(MainActivity.this, ViewAttraction.class);
+        Intent intent = new Intent(ViewAttraction.this, SubmitReview.class);
         startActivity(intent);
     }
 }
