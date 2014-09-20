@@ -31,6 +31,16 @@ public class ViewAttraction extends Activity {
         startActivity(intent);
     }
     
+    /**
+     * Open up view attraction informaiton activity
+     * @param view
+     */
+    public void viewAttractionInfo(View view)
+    {
+    	Intent intent = new Intent(ViewAttraction.this, ViewAttractionInfo.class);
+    	startActivity(intent);
+    }
+    
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) { 
 		Log.i("Attraction",(requestCode)+"abc");
 		if (requestCode == EDIT_ITEM_REQUEST_CODE) { 
