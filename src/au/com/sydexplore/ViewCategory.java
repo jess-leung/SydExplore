@@ -79,8 +79,6 @@ public class ViewCategory extends Activity {
 				final JSONObject attraction = data.getJSONObject(i);
 				attractionsArray.add((String) attraction.get("name"));
 			}
-			
-			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
