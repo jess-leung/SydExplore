@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
 	ArrayAdapter<String> categoriesAdapter;
 	static InputStream is = null;
     static String jsonin = "";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,15 +87,25 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
     
-    
 	private void setupListViewListener() { 
 		categoriesList.setOnItemClickListener(new OnItemClickListener() { 
 			@Override
 			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
 				String categoryClickedOn = categoriesAdapter.getItem(position); //.getText(); 
 				Log.i("MainActivity", "Clicked item " + position + ": " + categoryClickedOn); 
-				sendJson(categoryClickedOn);
-				
+				try {
+					sendJson(categoryClickedOn);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Intent intent = new Intent(MainActivity.this, ViewCategory.class); 
+				if (intent != null) { 
+					// put "extras" into the bundle for access in the edit activity
+					intent.putExtra("jsonString",jsonin); 
+					// brings up the second activity
+					startActivity(intent); 
+				} 
 			} 
 		}); 
 	}
@@ -102,8 +113,9 @@ public class MainActivity extends Activity {
     /** 
      * Send JSON to backend 
      * @param category
+     * @throws InterruptedException 
      */
-	private void sendJson(final String category) {
+	private void sendJson(final String category) throws InterruptedException {
 		Thread t = new Thread() {
 
 			public void run() {
@@ -140,7 +152,6 @@ public class MainActivity extends Activity {
 	    			}
 	    			is.close();
 	    			jsonin = sb.toString();
-	    			Log.d("JSON", jsonin);
 	    		} catch (Exception e) {
 	    			Log.d("JSON", "Caught Exception");
 	    			Log.e("Buffer Error", "Error converting result " + e.toString());
@@ -148,6 +159,7 @@ public class MainActivity extends Activity {
 	    		Log.d("JSON", "Json String returned");
 			}
 		};
-		t.start();      
+		t.start();
+		t.join();
 	}
 }

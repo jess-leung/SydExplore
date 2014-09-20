@@ -29,6 +29,10 @@
             android:label="@string/app_name" >
         </activity>
         <activity
+            android:name=".ViewCategory"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name=".SubmitReview"
             android:label="@string/app_name" >
         </activity>
