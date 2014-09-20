@@ -7,16 +7,16 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
-    
-	<uses-permission android:name="android.permission.INTERNET" />
-	
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="au.com.sydexplore.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,13 +25,17 @@
             </intent-filter>
         </activity>
         <activity
-      		android:name="au.com.sydexplore.ViewAttraction"
-      		android:label="@string/app_name">          
- 		</activity>
+            android:name=".ViewAttraction"
+            android:label="@string/app_name" >
+        </activity>
         <activity
-      		android:name="au.com.sydexplore.SubmitReview"
-      		android:label="@string/app_name">          
- 		</activity>
+            android:name=".SubmitReview"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ViewAttractionInfo"
+            android:label="@string/title_activity_view_attraction_info" >
+        </activity>
     </application>
 
 </manifest>

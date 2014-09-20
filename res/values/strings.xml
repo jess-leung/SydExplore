@@ -3,5 +3,7 @@
 
     <string name="app_name">SydExplore</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_view_attraction_info">ViewAttractionInfo</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
