@@ -41,7 +41,7 @@ public class ViewCategory extends Activity {
 	ListView listview; 
 	
 	// Attractions array
-	ArrayList<String> attractionsArray; 
+	ArrayList<Attraction> attractionsArray; 
 	
 	// Attractions adapter
 	ArrayAdapter<String> attractionsAdapter;
@@ -61,7 +61,7 @@ public class ViewCategory extends Activity {
         jsonString = "{ attractions: "+jsonString+" }";
         
         // Construct the array containing Attractions
-     	attractionsArray = new ArrayList<String>();
+     	attractionsArray = new ArrayList<Attraction>();
      	
      	// JSON Object parsing 
      	JSONObject obj;
@@ -77,7 +77,7 @@ public class ViewCategory extends Activity {
 			// then add to the array 
 			for (int i = 0; i < n; ++i) {
 				final JSONObject attraction = data.getJSONObject(i);
-				attractionsArray.add((String) attraction.get("name"));
+				attractionsArray.add(new Attraction(attraction));
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -85,7 +85,7 @@ public class ViewCategory extends Activity {
 		}	
 		
 		// Initialize array adapter for categories 
-        attractionsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,attractionsArray);
+        attractionsAdapter = new AttractionAdapter(this,attractionsArray);
         
         // Attach the adapter to a ListView
      	listview.setAdapter(attractionsAdapter);
