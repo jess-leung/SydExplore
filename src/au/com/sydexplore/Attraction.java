@@ -13,14 +13,18 @@ public class Attraction {
     // location of attraction 
     public String location; 
     
+    // url of image thumbnail
+    public String thumbnailUrl;
+    
     /** 
      * Constructor for normal attraction 
      * @param name
      * @param location
      */
-    public Attraction(String name, String location) {
+    public Attraction(String name, String location, String url) {
        this.name = name;
        this.location = location;
+       this.thumbnailUrl = url;
     }
     
     /**
@@ -31,6 +35,7 @@ public class Attraction {
         try {
             this.name = object.getString("name");
             this.location = object.getString("location");
+            this.thumbnailUrl = object.getString("thumbnail");
        } catch (JSONException e) {
             e.printStackTrace();
        }
@@ -67,5 +72,13 @@ public class Attraction {
      */
     public String getLocation(){
     	return location;
+    }
+    
+    /**
+     * Return url of thumbnail
+     * @return
+     */
+    public String getThumbnailUrl(){
+    	return thumbnailUrl;
     }
 }
