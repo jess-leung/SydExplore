@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 class AttractionHolder {
     TextView name;
+    TextView location;
     ImageView attractionImage;
 } 
     
