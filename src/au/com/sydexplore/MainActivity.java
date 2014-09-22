@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 	// List view for categories 
 	ListView categoriesList; 
 	// Array list containing the categories 
-	ArrayList<String> categoryArray; 
+	ArrayList<Category> categoryArray; 
 	// ArrayAdapter 
 	ArrayAdapter<String> categoriesAdapter;
 	static InputStream is = null;
@@ -55,21 +55,21 @@ public class MainActivity extends Activity {
      	categoriesList = (ListView) findViewById(R.id.categoriesList);
      		
         // Construct the data source
-     	categoryArray = new ArrayList<String>();
+     	categoryArray = new ArrayList<Category>();
      	
      	// Add in default categories 
-     	categoryArray.add("Adventurous");
-     	categoryArray.add("Social");
-     	categoryArray.add("Cultural"); 
-     	categoryArray.add("Historical"); 
-     	categoryArray.add("Education");
-     	categoryArray.add("Hungry"); 
-     	categoryArray.add("Natural");
-     	categoryArray.add("Lazy");
-     	categoryArray.add("Luxurious"); 
+     	categoryArray.add(new Category("Adventurous","trekking"));
+     	categoryArray.add(new Category("Social","party1"));
+     	categoryArray.add(new Category("Cultural","greek1")); 
+     	categoryArray.add(new Category("Historical","time12")); 
+     	categoryArray.add(new Category("Education","books30"));
+     	categoryArray.add(new Category("Hungry","plate7")); 
+     	categoryArray.add(new Category("Natural","tree101"));
+     	categoryArray.add(new Category("Lazy","man271"));
+     	categoryArray.add(new Category("Luxurious","banknotes")); 
      	
      	// Initialize array adapter for categories 
-        categoriesAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,categoryArray);
+        categoriesAdapter = new CategoryAdapter(this,categoryArray);
         
         // Attach the adapter to a ListView
         categoriesList.setAdapter(categoriesAdapter);
@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
 		categoriesList.setOnItemClickListener(new OnItemClickListener() { 
 			@Override
 			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
-				String categoryClickedOn = categoriesAdapter.getItem(position); //.getText(); 
+				String categoryClickedOn = categoryArray.get(position).getName();
 				Log.i("MainActivity", "Clicked item " + position + ": " + categoryClickedOn); 
 				try {
 					sendJson(categoryClickedOn);
