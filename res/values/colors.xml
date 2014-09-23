@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="semitransparent_white">#77ffffff</drawable>
+	<drawable name="white">#ffffff</drawable>
+	<drawable name="electric_blue">#04c7d9</drawable>
+	<drawable name="not_so_electric_blue">#069ebd</drawable>
+	<drawable name="dark_blue">#0378a6</drawable>
+</resources>
