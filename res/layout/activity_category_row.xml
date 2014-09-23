@@ -7,8 +7,9 @@
         android:id="@+id/categoryIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp" />
     
     <TextView
         android:id="@+id/categoryName"
@@ -17,6 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/categoryIcon"
         android:textSize="20dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:paddingBottom="30dp" 
+        android:layout_marginTop="15dp" />
     
 </RelativeLayout>
