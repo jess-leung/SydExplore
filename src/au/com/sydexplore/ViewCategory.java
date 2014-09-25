@@ -87,5 +87,33 @@ public class ViewCategory extends Activity {
         // Attach the adapter to a ListView
      	listview.setAdapter(attractionsAdapter);
      	
+     	setupListViewListener();
+     	
     }
+    
+    
+    
+	private void setupListViewListener() { 
+		
+		listview.setOnItemClickListener(new OnItemClickListener() { 
+			@Override
+			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
+				
+				Intent intent = new Intent(ViewCategory.this, ViewAttractionInfo.class);
+		        startActivity(intent);	
+				 
+			} 
+		});
+		
+		
+		
+
+		
+		
+		
+
+	}
+    
+    
+    
 }
