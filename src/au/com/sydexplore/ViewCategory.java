@@ -114,22 +114,8 @@ public class ViewCategory extends Activity {
 					intent.putExtra("attractionName", attractionClickedOn);
 					intent.putExtra("location", addressofAttractionClickedOn);
 					startActivity(intent);	
-				}
-				
-				
-				 
+				}	 
 			} 
 		});
-		
-		
-		
-
-		
-		
-		
-
 	}
-    
-    
-    
 }

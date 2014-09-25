@@ -40,7 +40,7 @@ public class SubmitReview extends Activity {
 		editReviewBody = (EditText) findViewById(R.id.editReviewBody);
 		editUser = (EditText) findViewById(R.id.editUsername);
 		editRating = (RatingBar) findViewById(R.id.ratingBar1);
-		attraction = "Sydney Opera House"; // TODO: get this dynamically 
+		attraction = getIntent().getStringExtra("attractionName");
 	}
 
 	public void onSubmit(View v) {

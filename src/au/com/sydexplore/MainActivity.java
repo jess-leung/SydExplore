@@ -77,16 +77,6 @@ public class MainActivity extends Activity {
         setupListViewListener(); 
     }
     
-    /** 
-     * Open up submit review activity 
-     * @param view
-     */
-    public void submitReview(View view) 
-    {
-        Intent intent = new Intent(MainActivity.this, ViewAttraction.class);
-        startActivity(intent);
-    }
-    
 	private void setupListViewListener() { 
 		categoriesList.setOnItemClickListener(new OnItemClickListener() { 
 			@Override

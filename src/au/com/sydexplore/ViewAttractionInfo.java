@@ -1,10 +1,12 @@
 package au.com.sydexplore;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class ViewAttractionInfo extends Activity {
@@ -91,5 +93,16 @@ public class ViewAttractionInfo extends Activity {
     	
 	}
 	
-	
+    /** 
+     * Open up submit review activity 
+     * @param view
+     */
+    public void submitReview(View view) 
+    {
+        Intent intent = new Intent(ViewAttractionInfo.this, SubmitReview.class);
+        if(intent!=null){
+        	intent.putExtra("attractionName", name);
+        	startActivity(intent);
+        }
+    }
 }
