@@ -34,15 +34,16 @@ public class ViewAttractionInfo extends Activity {
 		
 		//set the layout
 		setContentView(R.layout.activity_view_attraction_info);
-		
-		//get the data from the ViewCategory activity
+	
+		// Get the data from the list of attractions screen
+        name = getIntent().getStringExtra("attractionName");
+		location = getIntent().getStringExtra("location");
 		
 		//put the data into the variables
-		name = "Sydney Harbour Bridge";
 		openingHours = "9:00am - 5:00pm";
 		description = "Testing dummy data";
 		URL = "www.google.com";
-		location = "Sydney, Australia";
+		
 		
 		//display the attraction name
 		TextView textviewname = (TextView) findViewById(R.id.name);

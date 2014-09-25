@@ -99,8 +99,24 @@ public class ViewCategory extends Activity {
 			@Override
 			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
 				
+				//getting the name of the attraction that was clicked on
+				String attractionClickedOn = attractionsArray.get(position).getName();
+					
+				//get the address of the attraction that was clicked on
+				String addressofAttractionClickedOn = attractionsArray.get(position).getLocation();
+				
+				//start a new intent for the attraction information
 				Intent intent = new Intent(ViewCategory.this, ViewAttractionInfo.class);
-		        startActivity(intent);	
+		        
+				if (intent != null) {
+				
+					//add the attraction name and location to the attraction information intent
+					intent.putExtra("attractionName", attractionClickedOn);
+					intent.putExtra("location", addressofAttractionClickedOn);
+					startActivity(intent);	
+				}
+				
+				
 				 
 			} 
 		});
