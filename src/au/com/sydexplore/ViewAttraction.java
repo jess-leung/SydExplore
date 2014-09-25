@@ -39,6 +39,7 @@ public class ViewAttraction extends Activity {
     {
     	Intent intent = new Intent(ViewAttraction.this, ViewAttractionInfo.class);
     	startActivity(intent);
+
     }
     
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) { 
