@@ -40,12 +40,9 @@ public class ViewAttractionInfo extends Activity {
 		// Get the data from the list of attractions screen
         name = getIntent().getStringExtra("attractionName");
 		location = getIntent().getStringExtra("location");
-		
-		//put the data into the variables
-		openingHours = "9:00am - 5:00pm";
-		description = "Testing dummy data";
-		URL = "www.google.com";
-		
+		openingHours = getIntent().getStringExtra("openingHours");
+		description = getIntent().getStringExtra("description");
+		URL = getIntent().getStringExtra("URL");
 		
 		//display the attraction name
 		TextView textviewname = (TextView) findViewById(R.id.name);
