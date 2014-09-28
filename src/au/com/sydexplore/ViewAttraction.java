@@ -1,5 +1,12 @@
 package au.com.sydexplore;
 
+import java.io.File;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
 import au.com.sydexplore.R;
 
 import android.app.Activity;
@@ -14,6 +21,7 @@ import android.widget.Toast;
 public class ViewAttraction extends Activity {
 	
 	public final int EDIT_ITEM_REQUEST_CODE = 1243123;
+	DisplayImageOptions options;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {

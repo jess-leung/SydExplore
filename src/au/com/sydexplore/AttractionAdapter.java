@@ -9,6 +9,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,10 +30,17 @@ public class AttractionAdapter extends ArrayAdapter {
 	private List<Attraction> attractionList;
 	private Context context;
 
+	// ImageLoader options
+    DisplayImageOptions options;
+    
 	public AttractionAdapter(Context context, List attList) {
 		super(context, R.layout.activity_attraction_row, attList);
 		this.attractionList = attList;
 		this.context = context;
+		options = new DisplayImageOptions.Builder()
+		.cacheInMemory(true)
+		.cacheOnDisk(true)
+		.build();
 	}
 
 	@Override
@@ -52,10 +62,7 @@ public class AttractionAdapter extends ArrayAdapter {
 //	  holder.rightIcon.setImageDrawable(feed.getUserIcon());
 	  holder.attractionName.setText(att.getName());
 	  holder.location.setText(att.getLocation());
-	  Log.i("ATT",att.getName());
-	  if (holder.thumbnail != null) {
-			new ImageDownloaderTask(holder.thumbnail).execute("https://sydexplore-attractions.s3.amazonaws.com"+att.getThumbnailUrl());
-	  }
+	  ImageLoader.getInstance().displayImage("https://sydexplore-attractions.s3.amazonaws.com"+att.getThumbnailUrl(), holder.thumbnail, options);
 
 	  return view;
 	}
