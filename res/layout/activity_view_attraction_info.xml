@@ -47,5 +47,14 @@
         android:layout_marginLeft="17dp"
         android:onClick="submitReview"
         android:text="Submit Review" />
+
+   	<ListView
+   	    android:id="@+id/reviewList"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="wrap_content"
+   	    android:layout_above="@+id/button1"
+   	    android:layout_alignParentLeft="true" >
+
+   	</ListView>
     
 </RelativeLayout>

@@ -1,5 +1,11 @@
 package au.com.sydexplore;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +13,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class ViewAttractionInfo extends Activity {
@@ -29,6 +37,15 @@ public class ViewAttractionInfo extends Activity {
 	//image of attraction
 	public String image;
 	
+	// Listview for this activity 
+	ListView listview; 
+	
+	// Attractions array
+	ArrayList<Review> reviewsArray; 
+	
+	// Attractions adapter
+	ArrayAdapter<String> reviewsAdapter;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +53,7 @@ public class ViewAttractionInfo extends Activity {
 		
 		//set the layout
 		setContentView(R.layout.activity_view_attraction_info);
-	
+
 		// Get the data from the list of attractions screen
         name = getIntent().getStringExtra("attractionName");
 		location = getIntent().getStringExtra("location");
@@ -63,6 +80,45 @@ public class ViewAttractionInfo extends Activity {
 		//display the description of the attraction
 		TextView textviewdescription = (TextView) findViewById(R.id.description);
 		textviewdescription.setText(description);
+		
+		// reference the "listview" variable to the id-"listview" in the layout
+     	listview = (ListView) findViewById(R.id.reviewList);
+     	
+     	// Get the data from the main screen
+        String jsonString = getIntent().getStringExtra("jsonString");
+        jsonString = "{ reviews: "+jsonString+" }";
+        
+        // Construct the array containing Attractions
+     	reviewsArray = new ArrayList<Review>();
+     	
+     	// JSON Object parsing 
+     	JSONObject obj;
+     	JSONArray data = null; 
+     	
+		try {
+			// Load the JSON string 
+			obj = new JSONObject(jsonString);
+			data = obj.getJSONArray("reviews");
+			final int n = data.length();
+			
+			// If we successfully load the data from the JSON 
+			// then add to the array 
+			for (int i = 0; i < n; ++i) {
+				final JSONObject review = data.getJSONObject(i);
+				reviewsArray.add(new Review(review));
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		// Initialize array adapter for reviews
+        reviewsAdapter = new ReviewAdapter(this,reviewsArray);
+        
+        // Attach the adapter to a ListView
+     	listview.setAdapter(reviewsAdapter);
+		
+				
 	}
 
 

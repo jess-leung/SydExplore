@@ -42,6 +42,8 @@ public class ViewCategory extends Activity {
 	
 	// Attractions adapter
 	ArrayAdapter<String> attractionsAdapter;
+	static InputStream is = null;
+    static String jsonin = "";
 	
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -102,6 +104,19 @@ public class ViewCategory extends Activity {
 				//Get the attraction that was clicked on
 				Attraction attractionClickedOn = attractionsArray.get(position);
 				
+				//Get the attraction name
+				String attractionName = attractionClickedOn.getName();
+				
+				//get review details from the database
+				try{
+					sendJson(attractionName);
+				}
+					catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+				}
+				
+				
 				//start a new intent for the attraction information
 				Intent intent = new Intent(ViewCategory.this, ViewAttractionInfo.class);
 		        
@@ -113,9 +128,68 @@ public class ViewCategory extends Activity {
 					intent.putExtra("openingHours", attractionClickedOn.getOpeninghours());
 					intent.putExtra("URL", attractionClickedOn.getURL());
 					intent.putExtra("description", attractionClickedOn.getDescription());
+					intent.putExtra("jsonString",jsonin);
 					startActivity(intent);	
 				}	 
 			} 
 		});
 	}
+		
+		
+		/** 
+	     * Send JSON to backend 
+	     * @param category
+	     * @throws InterruptedException 
+	     */
+		private void sendJson(final String attractionName) throws InterruptedException {
+			Thread t = new Thread() {
+
+				public void run() {
+					HttpClient client = new DefaultHttpClient();
+					HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000); //Timeout Limit
+					
+					//HttpResponse response;
+		            JSONObject json = new JSONObject();
+
+		            try {
+		            	HttpPost post = new HttpPost("http://lit-cove-9769.herokuapp.com/attractions/getReviewDetails/");
+		            	// construct JSON output 
+		            	json.put("attraction_name", attractionName);
+		            	Log.d("JSON", json.toString());
+		            	StringEntity se = new StringEntity(json.toString());  
+		            	se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+		            	post.setEntity(se);
+		            	HttpResponse httpResponse = client.execute(post);
+		    			HttpEntity httpEntity = httpResponse.getEntity();
+		    			is = httpEntity.getContent();    
+		            	Log.d("JSON", "Got content from entity");
+	        
+		            } catch(Exception e) {
+		            	e.printStackTrace();
+		            	Log.d("JSON", "Caught Exception");
+		            }
+		            
+		            try {
+		    			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
+		    			StringBuilder sb = new StringBuilder();
+		    			String line = null;
+		    			while ((line = reader.readLine()) != null) {
+		    				sb.append(line + "\n");
+		    			}
+		    			is.close();
+		    			jsonin = sb.toString();
+		    		} catch (Exception e) {
+		    			Log.d("JSON", "Caught Exception");
+		    			Log.e("Buffer Error", "Error converting result " + e.toString());
+		    		}
+		    		Log.d("JSON", "Json String returned");
+				}
+			};
+			t.start();
+			t.join();
+		}
+		
+		
+		
+	
 }
