@@ -25,18 +25,22 @@ public class Attraction {
     //URL of the attraction
     public String URL;
     
+    //url of large image
+    public String image;
+    
     /** 
      * Constructor for normal attraction 
      * @param name
      * @param location
      */
-    public Attraction(String name, String location, String thumbnailurl, String openingHours, String description, String URL) {
+    public Attraction(String name, String location, String thumbnailurl, String openingHours, String description, String URL, String image) {
        this.name = name;
        this.location = location;
        this.thumbnailUrl = thumbnailurl;
        this.openingHours = openingHours;
        this.description = description;
        this.URL = URL;
+       this.image = image;
     }
     
     /**
@@ -51,6 +55,7 @@ public class Attraction {
             this.openingHours = object.getString("opening_hours");
             this.description = object.getString("description");
             this.URL = object.getString("url");
+            this.image = object.getString("image");
        } catch (JSONException e) {
             e.printStackTrace();
        }
@@ -107,5 +112,9 @@ public class Attraction {
     
     public String getURL(){
     	return URL;
+    }
+    
+    public String getImageURL(){
+    	return image;
     }
 }

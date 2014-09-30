@@ -124,6 +124,7 @@ public class ViewCategory extends Activity {
 						e.printStackTrace();
 				}
 				
+				//Log.d("jsonString",jsonin);
 				
 				//start a new intent for the attraction information
 				Intent intent = new Intent(ViewCategory.this, ViewAttractionInfo.class);
@@ -136,6 +137,7 @@ public class ViewCategory extends Activity {
 					intent.putExtra("openingHours", attractionClickedOn.getOpeninghours());
 					intent.putExtra("URL", attractionClickedOn.getURL());
 					intent.putExtra("description", attractionClickedOn.getDescription());
+					intent.putExtra("image", attractionClickedOn.getImageURL());
 					intent.putExtra("jsonString",jsonin);
 					startActivity(intent);	
 				}	 

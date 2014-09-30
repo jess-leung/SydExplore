@@ -1,10 +1,16 @@
 package au.com.sydexplore;
 
 import java.util.ArrayList;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -46,6 +53,9 @@ public class ViewAttractionInfo extends Activity {
 	// Attractions adapter
 	ArrayAdapter<String> reviewsAdapter;
 	
+	// ImageLoader options
+	DisplayImageOptions options;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +70,25 @@ public class ViewAttractionInfo extends Activity {
 		openingHours = getIntent().getStringExtra("openingHours");
 		description = getIntent().getStringExtra("description");
 		URL = getIntent().getStringExtra("URL");
+		image = getIntent().getStringExtra("image");
+				
+		// Create global configuration and initialize ImageLoader with this config
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(config);	
 		
-		//display the attraction name
-		TextView textviewname = (TextView) findViewById(R.id.name);
-		textviewname.setText(name);
+        options = new DisplayImageOptions.Builder()
+        		.cacheInMemory(true)
+        		.cacheOnDisk(true)
+        		.build();
+		
+        //display the image
+        ImageView imageviewname = (ImageView) findViewById(R.id.image);
+        ImageLoader.getInstance().displayImage("https://sydexplore-attractions.s3.amazonaws.com"+image, imageviewname, options);
+        
+        
+        //display the attraction name
+        TextView textviewname = (TextView) findViewById(R.id.name);
+        textviewname.setText(name);
 
 		//display the location of the attraction
 		TextView textviewlocation = (TextView) findViewById(R.id.location);
@@ -88,6 +113,8 @@ public class ViewAttractionInfo extends Activity {
         String jsonString = getIntent().getStringExtra("jsonString");
         jsonString = "{ reviews: "+jsonString+" }";
         
+        Log.d("JSON STRING",jsonString);
+        
         // Construct the array containing Attractions
      	reviewsArray = new ArrayList<Review>();
      	
@@ -106,11 +133,15 @@ public class ViewAttractionInfo extends Activity {
 			for (int i = 0; i < n; ++i) {
 				final JSONObject review = data.getJSONObject(i);
 				reviewsArray.add(new Review(review));
+				
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		
+		Log.d("Testing","TESTING");
+		//Log.d("First review",reviewsArray);
 		
 		// Initialize array adapter for reviews
         reviewsAdapter = new ReviewAdapter(this,reviewsArray);
