@@ -59,6 +59,7 @@ public class MainActivity extends Activity {
      	categoryArray = new ArrayList<Category>();
      	
      	// Add in default categories 
+     	categoryArray.add(new Category("All","international12",R.drawable.not_so_electric_blue));
      	categoryArray.add(new Category("Adventurous","trekking",R.drawable.sunsetOrange));
      	categoryArray.add(new Category("Social","party1",R.drawable.ripelemon));
      	categoryArray.add(new Category("Cultural","greek1",R.drawable.jade)); 
