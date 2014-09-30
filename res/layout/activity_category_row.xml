@@ -5,7 +5,7 @@
 
     <ImageView
         android:id="@+id/categoryIcon"
-        android:layout_width="170dp"
+        android:layout_width="fill_parent"
         android:layout_height="90dp"
         android:layout_alignTop="@layout/activity_category_row"
         android:paddingBottom="10dp"
