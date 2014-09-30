@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -48,6 +49,9 @@ public class ViewCategory extends Activity {
 	ArrayAdapter<String> attractionsAdapter;
 	static InputStream is = null;
     static String jsonin = "";
+    
+    // Google Map
+    private GoogleMap googleMap;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -101,6 +105,10 @@ public class ViewCategory extends Activity {
     }
     
     
+    public void initializeMap(View v){
+    	Intent intent = new Intent(ViewCategory.this, ViewCategoryMap.class);
+    	startActivity(intent);	
+    }
     
 	private void setupListViewListener() { 
 		
@@ -129,7 +137,6 @@ public class ViewCategory extends Activity {
 				Intent intent = new Intent(ViewCategory.this, ViewAttractionInfo.class);
 		        
 				if (intent != null) {
-				
 					//add the attraction information to the attraction information intent
 					intent.putExtra("attractionName", attractionClickedOn.getName());
 					intent.putExtra("location", attractionClickedOn.getLocation());
