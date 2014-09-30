@@ -29,6 +29,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -36,7 +37,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class MainActivity extends Activity {
 	
 	// List view for categories 
-	ListView categoriesList; 
+	GridView categoriesList; 
 	// Array list containing the categories 
 	ArrayList<Category> categoryArray; 
 	// ArrayAdapter 
@@ -52,7 +53,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         // reference the "listview" variable to the id-"listview" in the layout
-     	categoriesList = (ListView) findViewById(R.id.categoriesList);
+     	categoriesList = (GridView) findViewById(R.id.categoriesList);
      		
         // Construct the data source
      	categoryArray = new ArrayList<Category>();
@@ -146,7 +147,7 @@ public class MainActivity extends Activity {
 	    			Log.d("JSON", "Caught Exception");
 	    			Log.e("Buffer Error", "Error converting result " + e.toString());
 	    		}
-	    		Log.d("JSON", "Json String returned");
+	    		Log.d("JSON", jsonin);
 			}
 		};
 		t.start();

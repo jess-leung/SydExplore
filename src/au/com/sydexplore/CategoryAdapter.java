@@ -57,6 +57,7 @@ public class CategoryAdapter extends ArrayAdapter {
 		  int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
 		  Drawable res = context.getResources().getDrawable(imageResource);
 		  holder.icon.setImageDrawable(res);
+//		  holder.icon.setBackgroundResource(R.values.);
 	  }
 	  return view;
 	}

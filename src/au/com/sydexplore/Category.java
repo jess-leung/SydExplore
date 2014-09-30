@@ -7,6 +7,7 @@ public class Category {
     // url of image thumbnail
     public String icon;
     
+    
     /** 
      * Constructor for normal attraction 
      * @param name
