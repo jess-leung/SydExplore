@@ -1,5 +1,7 @@
 package au.com.sydexplore; 
 
+import au.com.sydexplore.R.drawable;
+
 public class Category {
 	// name of attraction 
     public String name;
@@ -7,15 +9,19 @@ public class Category {
     // url of image thumbnail
     public String icon;
     
+    // color of actegory
+    public int color; 
     
     /** 
      * Constructor for normal attraction 
      * @param name
      * @param location
      */
-    public Category(String name, String icon) {
+    public Category(String name, String icon,int sunsetorange) {
        this.name = name;
        this.icon = icon;
+       this.color = sunsetorange;
+       
     }
     
     /**
@@ -32,5 +38,12 @@ public class Category {
      */
     public String getIcon(){
     	return icon;
+    }
+    
+    /**
+     * Return color
+     */
+    public int getColor(){
+    	return color;
     }
 }

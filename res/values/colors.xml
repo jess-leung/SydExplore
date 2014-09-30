@@ -6,4 +6,13 @@
 	<drawable name="not_so_electric_blue">#069ebd</drawable>
 	<drawable name="dark_blue">#0378a6</drawable>
 	<drawable name="razzmatazz">#DB0A5B</drawable>
+	<drawable name="sunsetOrange">#F64747</drawable>
+	<drawable name="rebeccapurple">#663399</drawable>
+	<drawable name="mountainmeadow">#1BBC9B</drawable>
+	<drawable name="ripelemon">#F7CA18</drawable>
+	<drawable name="curiousblue">#1E8BC3</drawable>
+	<drawable name="jade">#00B16A</drawable>
+	<drawable name="california">#F89406</drawable>
+	<drawable name="jacksonspurple">#1F3A93</drawable>
+	<drawable name="crusta">#F2784B</drawable>
 </resources>

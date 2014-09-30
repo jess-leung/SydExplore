@@ -59,15 +59,15 @@ public class MainActivity extends Activity {
      	categoryArray = new ArrayList<Category>();
      	
      	// Add in default categories 
-     	categoryArray.add(new Category("Adventurous","trekking"));
-     	categoryArray.add(new Category("Social","party1"));
-     	categoryArray.add(new Category("Cultural","greek1")); 
-     	categoryArray.add(new Category("Historical","time12")); 
-     	categoryArray.add(new Category("Education","books30"));
-     	categoryArray.add(new Category("Hungry","plate7")); 
-     	categoryArray.add(new Category("Natural","tree101"));
-     	categoryArray.add(new Category("Lazy","man271"));
-     	categoryArray.add(new Category("Luxurious","banknotes")); 
+     	categoryArray.add(new Category("Adventurous","trekking",R.drawable.sunsetOrange));
+     	categoryArray.add(new Category("Social","party1",R.drawable.ripelemon));
+     	categoryArray.add(new Category("Cultural","greek1",R.drawable.jade)); 
+     	categoryArray.add(new Category("Historical","time12",R.drawable.crusta)); 
+     	categoryArray.add(new Category("Education","books30",R.drawable.jacksonspurple));
+     	categoryArray.add(new Category("Hungry","plate7",R.drawable.california)); 
+     	categoryArray.add(new Category("Natural","tree101",R.drawable.mountainmeadow));
+     	categoryArray.add(new Category("Lazy","man271",R.drawable.curiousblue));
+     	categoryArray.add(new Category("Luxurious","banknotes",R.drawable.rebeccapurple)); 
      	
      	// Initialize array adapter for categories 
         categoriesAdapter = new CategoryAdapter(this,categoryArray);
