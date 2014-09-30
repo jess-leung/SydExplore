@@ -1,12 +1,13 @@
 package au.com.sydexplore; 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Attraction {
+public class Attraction implements Serializable {
 	// name of attraction 
     public String name;
     
@@ -27,6 +28,10 @@ public class Attraction {
     
     //url of large image
     public String image;
+    
+    // long and lat 
+    public double longitude; 
+    public double latitude;
     
     /** 
      * Constructor for normal attraction 
@@ -51,6 +56,8 @@ public class Attraction {
         try {
             this.name = object.getString("name");
             this.location = object.getString("location");
+            this.latitude = Double.parseDouble(object.getString("latitude"));
+            this.longitude = Double.parseDouble(object.getString("longitude"));
             this.thumbnailUrl = object.getString("thumbnail");
             this.openingHours = object.getString("opening_hours");
             this.description = object.getString("description");

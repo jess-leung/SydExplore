@@ -2,23 +2,6 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <Button
-	        android:id="@+id/listAttractionsButton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="List" />
-    	<Button
-	        android:id="@+id/mapAttractionsButton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Map"
-	        android:onClick="initializeMap" />
-    </LinearLayout>
     
     <ListView
         android:id="@+id/attractionsList"

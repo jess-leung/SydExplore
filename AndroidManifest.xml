@@ -52,6 +52,10 @@
             android:label="@string/app_name" >
         </activity>
         <activity
+            android:name=".ViewCategoryList"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name=".ViewCategoryMap"
             android:label="@string/app_name" >
         </activity>
