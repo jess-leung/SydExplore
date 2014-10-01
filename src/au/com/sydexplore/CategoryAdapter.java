@@ -64,7 +64,7 @@ public class CategoryAdapter extends ArrayAdapter {
 	  return view;
 	}
 
-	 static class ViewHolder {
+	 class ViewHolder {
 		  TextView categoryName; 
 		  ImageView icon; 
 	 }

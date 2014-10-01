@@ -16,6 +16,7 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONObject;
 
+import au.com.sydexplore.CategoryAdapter.ViewHolder;
 import au.com.sydexplore.R;
 
 import android.app.Activity;
@@ -30,7 +31,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
@@ -83,6 +86,13 @@ public class MainActivity extends Activity {
 		categoriesList.setOnItemClickListener(new OnItemClickListener() { 
 			@Override
 			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
+				// Hover effect 
+				ImageView imageView = ((ViewHolder) view.getTag()).icon;
+				TextView textView = ((ViewHolder) view.getTag()).categoryName;
+				imageView.setBackgroundResource(R.drawable.electric_blue);
+				textView.setBackgroundResource(R.drawable.electric_blue);
+				
+				// Send data to heroku app
 				String categoryClickedOn = categoryArray.get(position).getName();
 				Log.i("MainActivity", "Clicked item " + position + ": " + categoryClickedOn); 
 				try {
