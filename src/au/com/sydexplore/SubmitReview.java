@@ -48,6 +48,24 @@ public class SubmitReview extends Activity {
 		String reviewText = editReviewBody.getText().toString(); 
 		String reviewTitle = editReviewTitle.getText().toString(); 
 		float rating = editRating.getRating();
+		
+		// Basic validation checking for empty fields 
+		if (username.equals("") || reviewText.equals("") || reviewTitle.equals("")){
+			String emptyFields="";
+			if (reviewTitle.equals("")){
+				emptyFields+="Review Title ";
+			}
+			if (username.equals("")){
+				emptyFields+="Username ";
+			}
+			if (reviewText.equals("")){
+				emptyFields+="Review ";
+			}
+			Toast.makeText(this, emptyFields+"fields cannot be empty.", Toast.LENGTH_SHORT).show(); 
+			return; 
+		}
+		
+		// Otherwise, can send the data to DB 
 		sendJson(username,reviewTitle,reviewText,rating);
 		
 		// Construct new intent to send data back 
@@ -58,6 +76,20 @@ public class SubmitReview extends Activity {
 		finish(); // closes the activity, pass data to parent
 	} 
 	
+	/**
+	 * Cancel functionality - take user back to previous activity 
+	 */
+	public void onCancel(View v){
+		finish(); 
+	}
+	
+	/**
+	 * Send JSON to the heroku postgres DB. 
+	 * @param username
+	 * @param reviewTitle
+	 * @param reviewText
+	 * @param rating
+	 */
 	private void sendJson(final String username, final String reviewTitle, final String reviewText, final Float rating) {
 		Thread t = new Thread() {
 

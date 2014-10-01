@@ -99,7 +99,8 @@
 	        android:layout_alignBaseline="@+id/submitReview"
 	        android:layout_alignBottom="@+id/submitReview"
 	        android:layout_toRightOf="@+id/submitReview"
-	        android:text="Cancel" />
+	        android:text="Cancel"
+	        android:onClick="onCancel" />
 	     
 	</LinearLayout>
 </ScrollView>
