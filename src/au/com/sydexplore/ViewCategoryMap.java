@@ -89,9 +89,12 @@ public class ViewCategoryMap extends Activity implements GooglePlayServicesClien
 		public void onConnected(Bundle arg0) {
 			// Get current location 
 			Location mCurrentLocation = mLocationClient.getLastLocation();
-			double lat = mCurrentLocation.getLatitude();
-			double lon = mCurrentLocation.getLongitude();
-			
+			double lat = 33.860;
+			double lon = 151.209;
+			if(mCurrentLocation != null){
+				lat = mCurrentLocation.getLatitude();
+				lon = mCurrentLocation.getLongitude();
+			}
 			//update google map, move it to current location
 			CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(lat,lon)).zoom(10).build();
 			googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
