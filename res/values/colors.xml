@@ -2,6 +2,7 @@
 <resources>
     <drawable name="semitransparent_white">#77ffffff</drawable>
 	<drawable name="white">#ffffff</drawable>
+	<drawable name="grey">#efefef</drawable>
 	<drawable name="electric_blue">#04c7d9</drawable>
 	<drawable name="not_so_electric_blue">#069ebd</drawable>
 	<drawable name="dark_blue">#0378a6</drawable>
@@ -15,4 +16,5 @@
 	<drawable name="california">#F89406</drawable>
 	<drawable name="jacksonspurple">#1F3A93</drawable>
 	<drawable name="crusta">#F2784B</drawable>
+	<drawable name="cinnabar">#E74C3C</drawable>
 </resources>

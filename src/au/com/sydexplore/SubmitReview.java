@@ -12,16 +12,20 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class SubmitReview extends Activity {
 	// EditText variables which refer to the text input fields 
+	TextView submitReviewTitle;
 	EditText editReviewTitle; 
 	EditText editReviewBody;
 	EditText editUser; 
@@ -36,11 +40,22 @@ public class SubmitReview extends Activity {
 		setContentView(R.layout.activity_submit_review);
 		
 		// get the input fields 
+		submitReviewTitle = (TextView) findViewById(R.id.submitReviewTitle);
 		editReviewTitle = (EditText) findViewById(R.id.editReviewTitle);
 		editReviewBody = (EditText) findViewById(R.id.editReviewBody);
 		editUser = (EditText) findViewById(R.id.editUsername);
 		editRating = (RatingBar) findViewById(R.id.ratingBar1);
 		attraction = getIntent().getStringExtra("attractionName");
+		String titleOfActivity = "Reviewing "+attraction;
+		
+		submitReviewTitle.setText(titleOfActivity);
+		editReviewBody.setMovementMethod(new ScrollingMovementMethod());
+		
+		// Find the root view
+		View root = editReviewTitle.getRootView();
+
+		// Set the color
+		root.setBackgroundColor(getResources().getColor(R.drawable.grey));	   
 	}
 
 	public void onSubmit(View v) {

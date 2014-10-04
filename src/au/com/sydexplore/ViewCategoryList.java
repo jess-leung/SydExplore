@@ -50,7 +50,8 @@ public class ViewCategoryList extends Activity {
 	static InputStream is = null;
 	static String jsonin = "";
 	
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         
