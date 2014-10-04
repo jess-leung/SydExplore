@@ -54,7 +54,8 @@
    	    android:layout_height="wrap_content"
    	    android:layout_above="@+id/button1"
    	    android:layout_alignParentLeft="true"
-   	    android:layout_alignTop="@+id/URL" >
+   	    android:layout_below="@+id/description"
+ >
 
    	</ListView>
 
