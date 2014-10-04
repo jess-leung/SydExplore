@@ -47,6 +47,8 @@ public class MainActivity extends Activity {
 	ArrayAdapter<String> categoriesAdapter;
 	static InputStream is = null;
     static String jsonin = "";
+    View selectedView;
+    int oldColor; 
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +84,25 @@ public class MainActivity extends Activity {
         setupListViewListener(); 
     }
     
+    @Override
+    protected void onResume()
+    {   
+        // TODO Auto-generated method stub
+        super.onResume();
+        if (selectedView!=null){
+        	ImageView imageView = ((ViewHolder) selectedView.getTag()).icon;
+     		TextView textView = ((ViewHolder) selectedView.getTag()).categoryName;
+     		imageView.setBackgroundResource(oldColor);
+     		textView.setBackgroundResource(oldColor);
+        }
+    }
+    
 	private void setupListViewListener() { 
 		categoriesList.setOnItemClickListener(new OnItemClickListener() { 
 			@Override
 			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
+				selectedView = view;
+				oldColor = categoryArray.get(position).getColor();
 				// Hover effect 
 				ImageView imageView = ((ViewHolder) view.getTag()).icon;
 				TextView textView = ((ViewHolder) view.getTag()).categoryName;
