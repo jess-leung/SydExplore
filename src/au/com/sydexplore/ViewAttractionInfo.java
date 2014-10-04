@@ -126,6 +126,7 @@ public class ViewAttractionInfo extends Activity {
 			// Load the JSON string 
 			obj = new JSONObject(jsonString);
 			data = obj.getJSONArray("reviews");
+			Log.d("data",data.toString());
 			final int n = data.length();
 			
 			// If we successfully load the data from the JSON 
@@ -135,6 +136,8 @@ public class ViewAttractionInfo extends Activity {
 				reviewsArray.add(new Review(review));
 				
 			}
+			
+			//Log.d("Review Array", reviewsArray.get(0).getReviewerName());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

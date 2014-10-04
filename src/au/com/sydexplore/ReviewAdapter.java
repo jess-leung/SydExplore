@@ -42,6 +42,7 @@ public class ReviewAdapter extends ArrayAdapter{
 				view = LayoutInflater.from(context).inflate(R.layout.activity_review_row, null, false);
 				holder = new ViewHolder();
 				holder.reviewTitle = (TextView) view.findViewById(R.id.reviewTitle);
+				holder.reviewerName = (TextView) view.findViewById(R.id.reviewerName);
 				view.setTag(holder);
 			}else{
 				holder = (ViewHolder) view.getTag();
@@ -49,6 +50,7 @@ public class ReviewAdapter extends ArrayAdapter{
 	  
 		  Review rev = reviewList.get(position);
 		  holder.reviewTitle.setText(rev.getReviewTitle());
+		  holder.reviewerName.setText(rev.getReviewerName());
 
 
 		  return view;
@@ -57,8 +59,9 @@ public class ReviewAdapter extends ArrayAdapter{
 		
 		 static class ViewHolder {
 			TextView reviewTitle;
-			
+			TextView reviewerName;
 			 }
+		 
 
 
 	

@@ -21,7 +21,7 @@ public class Review {
 	    public String reviewerName;
 	    
 	    //review date
-	    public String reviewDate;
+	    //public String reviewDate;
 	    
 	    /** 
 	     * Constructor for normal review 
@@ -29,12 +29,12 @@ public class Review {
 	     * @param review text
 	     * @param review rating
 	     */
-	    public Review(String reviewText, String reviewerName, String reviewTitle, String reviewRating, String reviewDate) {
+	    public Review(String reviewerName, String reviewerText, String reviewRating, String reviewTitle) {
 	       this.reviewTitle = reviewTitle;
 	       this.reviewText = reviewText;
 	       this.reviewRating = reviewRating;
 	       this.reviewerName = reviewerName;
-	       this.reviewDate = reviewDate;
+	       //this.reviewDate = reviewDate;
 
 	    }
 	    
@@ -44,11 +44,14 @@ public class Review {
 	     */
 	    public Review(JSONObject object){
 	        try {
-	            this.reviewTitle = object.getString("reviewTitle");
-	            this.reviewText = object.getString("reviewText");
-	            this.reviewRating = object.getString("reviewRating");
-	            this.reviewerName = object.getString("reviewerName");
-	            this.reviewDate = object.getString("reviewDate");
+	        	this.reviewerName = object.getString("reviewer_name");
+	        	this.reviewText = object.getString("review_text");
+	        	this.reviewRating = object.getString("review_rating");
+	        	this.reviewTitle = object.getString("review_title");
+	            
+	            
+	            
+	            //this.reviewDate = object.getString("reviewDate");
 	       } catch (JSONException e) {
 	            e.printStackTrace();
 	       }
@@ -107,9 +110,9 @@ public class Review {
 	     * Return review date
 	     * @return
 	     */
-	    public String getReviewDate(){
-	    	return reviewDate;
-	    }
+	    //public String getReviewDate(){
+	    	//return reviewDate;
+	    //}
 	
 	
 }
