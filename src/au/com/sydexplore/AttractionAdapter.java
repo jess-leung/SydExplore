@@ -72,5 +72,6 @@ public class AttractionAdapter extends ArrayAdapter {
 		  TextView attractionName;
 		  TextView location;
 		  ImageView thumbnail; 
+		  ImageView arrow;
 	 }
 }
