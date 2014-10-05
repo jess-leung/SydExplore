@@ -20,41 +20,82 @@
     
     <TextView
          android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
+        android:layout_below="@+id/image"
+        android:textColor="#33b5e5"
+        android:textSize="30sp"
+        android:background="#000000"
+        android:gravity="center"
+        android:padding="15dp" />
+    
+    <TextView android:id="@+id/locationTitle"
+        android:text="Address:"
+        android:layout_below="@+id/name" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:textSize="20sp" />
     
     <TextView
          android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp" />
+        android:layout_below="@+id/locationTitle" />
         
+       <TextView
+           android:id="@+id/openingHoursTitle"
+           android:text="Opening Hours:"
+           android:layout_below="@+id/location"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="20sp" />
+    
     <TextView
          android:id="@+id/openingHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp" />
-            
+        android:layout_below="@+id/openingHoursTitle" />
+     
+       <TextView android:id="@+id/URLTitle"
+        android:text="Website:"
+        android:layout_below="@+id/openingHours" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+    
     <TextView
          android:id="@+id/URL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp" />
+        android:layout_below="@+id/URLTitle" />
 
+    
+       <TextView android:id="@+id/descriptionTitle"
+        android:text="Description:"
+        android:layout_below="@+id/URL" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+    
+    
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"/>
+        android:layout_below="@+id/descriptionTitle" />
     
-
+   <TextView android:id="@+id/reviewsTitle"
+        android:text="Reviews:"
+        android:layout_below="@+id/description" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
 
    	<ListView
    	    android:id="@+id/reviewList"
    	    android:layout_width="fill_parent"
    	    android:layout_height="300dp"
-   	    android:layout_below="@+id/description"
+   	    android:layout_below="@+id/reviewsTitle"
 		android:layout_alignParentBottom="true"
  >
 
@@ -67,9 +108,11 @@
    	
    	<ImageView
    	    android:id="@+id/image"
-   	    android:layout_width="150dp"
-   	    android:layout_height="96dp"
-   	    android:background="@drawable/placeholder" />
+   	    android:layout_width="fill_parent"
+   	    android:layout_height="120dp"
+   	    android:background="@drawable/placeholder"
+   	    android:layout_margin="0dp"
+   	    android:padding="0dp" />
     
    	
 </RelativeLayout></ScrollView>   
