@@ -87,7 +87,11 @@
 
    	</ListView>
 
+  	
+        
    	
+
+
 
    	
    	   	
@@ -110,5 +114,12 @@
         android:onClick="submitReview"
         android:text="Submit Review"
         android:layout_alignParentBottom="true" />
+    	   	
+    	   	   	<LinearLayout
+   	    			android:id="@+id/fragment"
+   	    			android:layout_height="150dp"
+   	    			android:layout_width="match_parent"
+   	    			android:orientation="vertical"
+   	    			/>
    	
 </RelativeLayout>

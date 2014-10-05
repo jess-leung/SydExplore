@@ -13,16 +13,22 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+import au.com.sydexplore.CategoryAdapter.ViewHolder;
 
 public class ViewAttractionInfo extends Activity {
 	
@@ -55,7 +61,7 @@ public class ViewAttractionInfo extends Activity {
 	
 	// ImageLoader options
 	DisplayImageOptions options;
-	
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -152,9 +158,35 @@ public class ViewAttractionInfo extends Activity {
         // Attach the adapter to a ListView
      	listview.setAdapter(reviewsAdapter);
 		
-				
+		//set up the fragments for displaying reviews
+     	setupListViewListener();
+		
 	}
 
+	
+	
+	private void setupListViewListener() { 
+		listview.setOnItemClickListener(new OnItemClickListener() { 
+			@Override
+			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
+				
+				FragmentManager fragmentmanager = getFragmentManager();
+				FragmentTransaction fragmenttransaction = fragmentmanager.beginTransaction();
+				FragmentReview fragmentreview = new FragmentReview();
+				fragmenttransaction.add(R.id.fragment, fragmentreview);
+				fragmenttransaction.commit();
+				
+			} 
+		}); 
+	}
+
+	
+	
+	
+	
+	
+	
+	
 
 
 	@Override
