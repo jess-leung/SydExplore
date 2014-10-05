@@ -64,16 +64,16 @@ public class MainActivity extends Activity {
      	categoryArray = new ArrayList<Category>();
      	
      	// Add in default categories 
-     	categoryArray.add(new Category("All","international12",R.drawable.not_so_electric_blue));
-     	categoryArray.add(new Category("Adventurous","trekking",R.drawable.sunsetOrange));
-     	categoryArray.add(new Category("Social","party1",R.drawable.ripelemon));
-     	categoryArray.add(new Category("Cultural","greek1",R.drawable.jade)); 
-     	categoryArray.add(new Category("Historical","time12",R.drawable.crusta)); 
-     	categoryArray.add(new Category("Education","books30",R.drawable.jacksonspurple));
-     	categoryArray.add(new Category("Hungry","plate7",R.drawable.california)); 
-     	categoryArray.add(new Category("Natural","tree101",R.drawable.mountainmeadow));
-     	categoryArray.add(new Category("Lazy","man271",R.drawable.curiousblue));
-     	categoryArray.add(new Category("Luxurious","banknotes",R.drawable.rebeccapurple)); 
+     	categoryArray.add(new Category("All","international12",R.drawable.not_so_electric_blue,R.drawable.electric_blue));
+     	categoryArray.add(new Category("Adventurous","trekking",R.drawable.sunsetOrange,R.drawable.sunsetterOrange));
+     	categoryArray.add(new Category("Social","party1",R.drawable.ripelemon,R.drawable.saffron));
+     	categoryArray.add(new Category("Cultural","greek1",R.drawable.jade,R.drawable.emerald)); 
+     	categoryArray.add(new Category("Historical","time12",R.drawable.crusta,R.drawable.jaffa)); 
+     	categoryArray.add(new Category("Education","books30",R.drawable.jacksonspurple,R.drawable.jellybean));
+     	categoryArray.add(new Category("Hungry","plate7",R.drawable.california,R.drawable.buttercup)); 
+     	categoryArray.add(new Category("Natural","tree101",R.drawable.mountainmeadow,R.drawable.carribeangreen));
+     	categoryArray.add(new Category("Lazy","man271",R.drawable.curiousblue,R.drawable.pictonblue));
+     	categoryArray.add(new Category("Luxurious","banknotes",R.drawable.rebeccapurple,R.drawable.seance)); 
      	
      	// Initialize array adapter for categories 
         categoriesAdapter = new CategoryAdapter(this,categoryArray);
@@ -103,6 +103,7 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
 				selectedView = view;
 				oldColor = categoryArray.get(position).getColor();
+				int secondaryColor = categoryArray.get(position).secondaryColor;
 				// Hover effect 
 				ImageView imageView = ((ViewHolder) view.getTag()).icon;
 				TextView textView = ((ViewHolder) view.getTag()).categoryName;
@@ -123,6 +124,7 @@ public class MainActivity extends Activity {
 					// put "extras" into the bundle for access in the edit activity
 					intent.putExtra("jsonString",jsonin); 
 					intent.putExtra("primaryColor", oldColor);
+					intent.putExtra("secondaryColor", secondaryColor);
 					// brings up the second activity
 					startActivity(intent); 
 				} 

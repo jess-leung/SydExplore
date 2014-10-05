@@ -8,13 +8,22 @@
 	<drawable name="dark_blue">#0378a6</drawable>
 	<drawable name="razzmatazz">#DB0A5B</drawable>
 	<drawable name="sunsetOrange">#F64747</drawable>
+	<drawable name="sunsetterOrange">#F9690E</drawable>
+	<drawable name="buttercup">#F39C12</drawable>
+	<drawable name="jaffa">#F27935</drawable>
 	<drawable name="rebeccapurple">#663399</drawable>
+	<drawable name="seance">#9A12B3</drawable>
 	<drawable name="mountainmeadow">#1BBC9B</drawable>
+	<drawable name="carribeangreen">#03C9A9</drawable>
 	<drawable name="ripelemon">#F7CA18</drawable>
+	<drawable name="saffron">#F4D03F</drawable>
 	<drawable name="curiousblue">#1E8BC3</drawable>
+	<drawable name="pictonblue">#22A7F0</drawable>
 	<drawable name="jade">#00B16A</drawable>
+	<drawable name="emerald">#3FC380</drawable>
 	<drawable name="california">#F89406</drawable>
 	<drawable name="jacksonspurple">#1F3A93</drawable>
+	<drawable name="jellybean">#2574A9</drawable>
 	<drawable name="crusta">#F2784B</drawable>
 	<drawable name="cinnabar">#E74C3C</drawable>
 </resources>

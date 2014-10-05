@@ -23,6 +23,7 @@ public class ViewCategory extends TabActivity {
 	
 	// Colors
 	public static int primaryColor;
+	public static int secondaryColor;
 	
     /** Called when the activity is first created. */
     @Override
@@ -36,6 +37,7 @@ public class ViewCategory extends TabActivity {
         
         // Get colors
         primaryColor = getIntent().getIntExtra("primaryColor",R.drawable.electric_blue);
+        secondaryColor = getIntent().getIntExtra("secondaryColor", R.drawable.not_so_electric_blue);
         
         TabHost tabHost = getTabHost();
          

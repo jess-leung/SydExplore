@@ -89,7 +89,7 @@ public class ViewCategoryList extends Activity {
 		
 		// Initialize array adapter for categories 
      	Log.i("ATT",ViewCategory.attractionsArray.toString());
-        attractionsAdapter = new AttractionAdapter(this,ViewCategory.attractionsArray,ViewCategory.primaryColor);
+        attractionsAdapter = new AttractionAdapter(this,ViewCategory.attractionsArray,ViewCategory.primaryColor,ViewCategory.secondaryColor);
         
         // Attach the adapter to a ListView
      	listview.setAdapter(attractionsAdapter);

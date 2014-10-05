@@ -32,12 +32,14 @@ public class AttractionAdapter extends ArrayAdapter {
 	// ImageLoader options
     DisplayImageOptions options;
     private int primaryColor;
+    private int secondaryColor;
     
-	public AttractionAdapter(Context context, List attList,int primaryColor) {
+	public AttractionAdapter(Context context, List attList,int primaryColor,int secondaryColor) {
 		super(context, R.layout.activity_attraction_row, attList);
 		this.attractionList = attList;
 		this.context = context;
 		this.primaryColor = primaryColor;
+		this.secondaryColor = secondaryColor;
 		options = new DisplayImageOptions.Builder()
 		.cacheInMemory(true)
 		.cacheOnDisk(true)
@@ -69,9 +71,9 @@ public class AttractionAdapter extends ArrayAdapter {
 	  if(position%2==0){
 		  holder.rect.setBackgroundResource(primaryColor);
 	  }
-//	  else{ // Set odd strip rectangle color 
-//		  
-//	  }
+	  else{ // Set odd strip rectangle color 
+		  holder.rect.setBackgroundResource(secondaryColor);
+	  }
 	  return view;
 	}
 

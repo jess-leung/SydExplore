@@ -9,19 +9,22 @@ public class Category {
     // url of image thumbnail
     public String icon;
     
-    // color of actegory
+    // color of category
     public int color; 
+    
+    // secondary color of category 
+    public int secondaryColor;
     
     /** 
      * Constructor for normal attraction 
      * @param name
      * @param location
      */
-    public Category(String name, String icon,int sunsetorange) {
+    public Category(String name, String icon,int sunsetorange, int secondaryCol) {
        this.name = name;
        this.icon = icon;
        this.color = sunsetorange;
-       
+       this.secondaryColor = secondaryCol;
     }
     
     /**
