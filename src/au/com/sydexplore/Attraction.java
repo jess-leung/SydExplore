@@ -33,6 +33,10 @@ public class Attraction implements Serializable {
     public double longitude; 
     public double latitude;
     
+    // colors 
+    public int primaryColor;
+    public int secondaryColor;
+    
     /** 
      * Constructor for normal attraction 
      * @param name
@@ -83,6 +87,20 @@ public class Attraction implements Serializable {
                }
           }
           return attractions;
+    }
+    
+    /**
+     * Set primary color 
+     */
+    public void setPrimaryColor(int color){
+    	this.primaryColor = color;
+    }
+    
+    /**
+     * Set secondary color 
+     */
+    public void setSecondaryColor(int color){
+    	this.secondaryColor = color;
     }
     
     /**

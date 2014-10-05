@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -19,17 +20,23 @@ public class ViewCategory extends TabActivity {
 	// Attractions array
 	public static ArrayList<Attraction> attractionsArray; 	
 	public static String jsonString = "";
-
-	 
+	
+	// Colors
+	public static int primaryColor;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_tab);
         
+        // Get JSON string from intent data 
         jsonString = getIntent().getStringExtra("jsonString");
         jsonString = "{ attractions: "+jsonString+" }";
-         
+        
+        // Get colors
+        primaryColor = getIntent().getIntExtra("primaryColor",R.drawable.electric_blue);
+        
         TabHost tabHost = getTabHost();
          
         // Tab for Photos

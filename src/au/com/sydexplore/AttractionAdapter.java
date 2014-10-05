@@ -29,14 +29,15 @@ public class AttractionAdapter extends ArrayAdapter {
 
 	private List<Attraction> attractionList;
 	private Context context;
-
 	// ImageLoader options
     DisplayImageOptions options;
+    private int primaryColor;
     
-	public AttractionAdapter(Context context, List attList) {
+	public AttractionAdapter(Context context, List attList,int primaryColor) {
 		super(context, R.layout.activity_attraction_row, attList);
 		this.attractionList = attList;
 		this.context = context;
+		this.primaryColor = primaryColor;
 		options = new DisplayImageOptions.Builder()
 		.cacheInMemory(true)
 		.cacheOnDisk(true)
@@ -53,6 +54,7 @@ public class AttractionAdapter extends ArrayAdapter {
 			holder.attractionName = (TextView) view.findViewById(R.id.name);
 			holder.location = (TextView) view.findViewById(R.id.location);
 			holder.thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+			holder.rect = (ImageView) view.findViewById(R.id.rectimage);
 			view.setTag(holder);
 		}else{
 			holder = (ViewHolder) view.getTag();
@@ -63,7 +65,13 @@ public class AttractionAdapter extends ArrayAdapter {
 	  holder.attractionName.setText(att.getName());
 	  holder.location.setText(att.getLocation());
 	  ImageLoader.getInstance().displayImage("https://sydexplore-attractions.s3.amazonaws.com"+att.getThumbnailUrl(), holder.thumbnail, options);
-
+	  // Set even strip rectangle color 
+	  if(position%2==0){
+		  holder.rect.setBackgroundResource(primaryColor);
+	  }
+//	  else{ // Set odd strip rectangle color 
+//		  
+//	  }
 	  return view;
 	}
 
@@ -72,6 +80,6 @@ public class AttractionAdapter extends ArrayAdapter {
 		  TextView attractionName;
 		  TextView location;
 		  ImageView thumbnail; 
-		  ImageView arrow;
+		  ImageView rect;
 	 }
 }

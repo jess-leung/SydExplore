@@ -47,6 +47,7 @@ public class ViewCategoryList extends Activity {
 	// Attractions adapter
 	ArrayAdapter<String> attractionsAdapter;
 
+	// JSON variables 
 	static InputStream is = null;
 	static String jsonin = "";
 	
@@ -77,7 +78,8 @@ public class ViewCategoryList extends Activity {
 				// then add to the array 
 				for (int i = 0; i < n; ++i) {
 					final JSONObject attraction = data.getJSONObject(i);
-					ViewCategory.attractionsArray.add(new Attraction(attraction));
+					Attraction newAttraction = new Attraction(attraction);
+					ViewCategory.attractionsArray.add(newAttraction);
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -87,7 +89,7 @@ public class ViewCategoryList extends Activity {
 		
 		// Initialize array adapter for categories 
      	Log.i("ATT",ViewCategory.attractionsArray.toString());
-        attractionsAdapter = new AttractionAdapter(this,ViewCategory.attractionsArray);
+        attractionsAdapter = new AttractionAdapter(this,ViewCategory.attractionsArray,ViewCategory.primaryColor);
         
         // Attach the adapter to a ListView
      	listview.setAdapter(attractionsAdapter);

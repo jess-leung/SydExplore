@@ -122,6 +122,7 @@ public class MainActivity extends Activity {
 				if (intent != null) { 
 					// put "extras" into the bundle for access in the edit activity
 					intent.putExtra("jsonString",jsonin); 
+					intent.putExtra("primaryColor", oldColor);
 					// brings up the second activity
 					startActivity(intent); 
 				} 
