@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:background="#BB0A0A">
+    
+    
+    <TextView
+        android:id="@+id/reviewTitle" 
+        android:layout_width="fill_parent"
+     	android:layout_height="20dp" />
+    
+    <TextView 
+        android:id="@+id/reviewerName"
+        android:layout_below="@+id/reviewTitle" 
+        android:layout_width="fill_parent"
+     	android:layout_height="20dp" />
+    
+    <TextView 
+        android:id="@+id/reviewText"
+        android:layout_below="@+id/reviewerName"
+        android:layout_width="fill_parent"
+     	android:layout_height="20dp" />
+        
+    <TextView 
+        android:id="@+id/reviewRating"
+        android:layout_below="@+id/reviewText"
+        android:layout_width="fill_parent"
+     	android:layout_height="20dp" />
+    
+    
+</LinearLayout>
