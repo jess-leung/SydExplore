@@ -170,9 +170,23 @@ public class ViewAttractionInfo extends Activity {
 			@Override
 			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
 				
+				//Get the review that was clicked on
+				Review reviewClickedOn = reviewsArray.get(position);
+				
+			
+				
 				FragmentManager fragmentmanager = getFragmentManager();
 				FragmentTransaction fragmenttransaction = fragmentmanager.beginTransaction();
 				FragmentReview fragmentreview = new FragmentReview();
+				
+				//send the details of the review clicked to the ReviewFragment
+				final Bundle bundle = new Bundle();
+				bundle.putString("reviewTitle",reviewClickedOn.getReviewTitle());
+				bundle.putString("reviewText",reviewClickedOn.getReviewText());
+				bundle.putString("reviewRating",reviewClickedOn.getReviewRating());
+				bundle.putString("reviewerName",reviewClickedOn.getReviewerName());
+				fragmentreview.setArguments(bundle);
+				
 				fragmenttransaction.add(R.id.fragment, fragmentreview);
 				fragmenttransaction.commit();
 				
