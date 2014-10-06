@@ -61,6 +61,10 @@ public class ViewAttractionInfo extends Activity {
 	
 	// ImageLoader options
 	DisplayImageOptions options;
+	
+	//Fragmemt for reiew
+	FragmentManager fragmentmanager;
+	FragmentTransaction fragmenttransaction;
 
 
 	@Override
@@ -172,11 +176,9 @@ public class ViewAttractionInfo extends Activity {
 				
 				//Get the review that was clicked on
 				Review reviewClickedOn = reviewsArray.get(position);
-				
-			
-				
-				FragmentManager fragmentmanager = getFragmentManager();
-				FragmentTransaction fragmenttransaction = fragmentmanager.beginTransaction();
+								
+				fragmentmanager = getFragmentManager();
+				fragmenttransaction = fragmentmanager.beginTransaction();
 				FragmentReview fragmentreview = new FragmentReview();
 				
 				//send the details of the review clicked to the ReviewFragment
@@ -188,18 +190,20 @@ public class ViewAttractionInfo extends Activity {
 				fragmentreview.setArguments(bundle);
 				
 				fragmenttransaction.add(R.id.fragment, fragmentreview);
+				fragmenttransaction.addToBackStack("review");
 				fragmenttransaction.commit();
 				
 			} 
 		}); 
+		
+	}
+	
+	
+	public void closeFragment(View v){
+		
+		fragmentmanager.popBackStack();
 	}
 
-	
-	
-	
-	
-	
-	
 	
 
 
