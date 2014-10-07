@@ -1,13 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:theme="@android:style/Theme.NoTitleBar" >
+    android:background="#34495E" >
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="144dp"
-        android:layout_height="174dp"
-        android:src="@drawable/sydexplorelogo" />
+        android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+    	android:layout_gravity="center_vertical"
+		android:layout_marginRight="13dp"
+		android:layout_marginLeft="10dp"
+        android:src="@drawable/logo" />
 
 </LinearLayout>

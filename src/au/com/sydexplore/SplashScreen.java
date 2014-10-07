@@ -50,7 +50,7 @@ public class SplashScreen extends Activity {
             public void run() {
                 try {
                     super.run();
-                    sleep(3000);  //Delay main screen by 3 seconds 
+                    sleep(5000);  //Delay main screen by 3 seconds 
                 } catch (Exception e) {
 
                 } finally {
