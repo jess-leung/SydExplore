@@ -141,7 +141,6 @@ public class ViewCategoryMap extends Activity implements GooglePlayServicesClien
 			for(Attraction att:ViewCategory.attractionsArray){
 				double attLat = att.latitude;
 				double attLon = att.longitude;
-				Log.i("ATT",String.valueOf(attLat));
 				MarkerOptions marker = new MarkerOptions().position(new LatLng(attLat, attLon)).title(att.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.smalllogo));
 				// adding marker
 				googleMap.addMarker(marker).showInfoWindow();
@@ -206,11 +205,9 @@ public class ViewCategoryMap extends Activity implements GooglePlayServicesClien
 		            	HttpResponse httpResponse = client.execute(post);
 		    			HttpEntity httpEntity = httpResponse.getEntity();
 		    			is = httpEntity.getContent();    
-		            	Log.d("JSON", "Got content from entity");
 	        
 		            } catch(Exception e) {
 		            	e.printStackTrace();
-		            	Log.d("JSON", "Caught Exception");
 		            }
 		            
 		            try {
@@ -226,7 +223,6 @@ public class ViewCategoryMap extends Activity implements GooglePlayServicesClien
 		    			Log.d("JSON", "Caught Exception");
 		    			Log.e("Buffer Error", "Error converting result " + e.toString());
 		    		}
-		    		Log.d("JSON", "Json String returned");
 				}
 			};
 			t.start();
