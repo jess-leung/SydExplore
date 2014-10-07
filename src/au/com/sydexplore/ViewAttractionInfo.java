@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import au.com.sydexplore.CategoryAdapter.ViewHolder;
 
@@ -66,7 +67,8 @@ public class ViewAttractionInfo extends Activity {
 	FragmentManager fragmentmanager;
 	FragmentTransaction fragmenttransaction;
 
-
+	public final int SUBMIT_OK = 124567;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -239,7 +241,15 @@ public class ViewAttractionInfo extends Activity {
         Intent intent = new Intent(ViewAttractionInfo.this, SubmitReview.class);
         if(intent!=null){
         	intent.putExtra("attractionName", name);
-        	startActivity(intent);
+        	startActivityForResult(intent,SUBMIT_OK);
         }
     }
+    
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) { 
+		if (requestCode == SUBMIT_OK) { 
+			if (resultCode == RESULT_OK) {
+				Toast.makeText(this, "Review submitted for moderation", Toast.LENGTH_SHORT).show(); 
+			}
+		}
+	}
 }
