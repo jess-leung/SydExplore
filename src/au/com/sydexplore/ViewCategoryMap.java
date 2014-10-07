@@ -24,6 +24,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -141,7 +142,7 @@ public class ViewCategoryMap extends Activity implements GooglePlayServicesClien
 				double attLat = att.latitude;
 				double attLon = att.longitude;
 				Log.i("ATT",String.valueOf(attLat));
-				MarkerOptions marker = new MarkerOptions().position(new LatLng(attLat, attLon)).title(att.getName());
+				MarkerOptions marker = new MarkerOptions().position(new LatLng(attLat, attLon)).title(att.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.smalllogo));
 				// adding marker
 				googleMap.addMarker(marker).showInfoWindow();
 			}
