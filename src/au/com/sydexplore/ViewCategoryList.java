@@ -38,6 +38,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.TextView;
 
 public class ViewCategoryList extends Activity {
     
@@ -47,6 +48,9 @@ public class ViewCategoryList extends Activity {
 	// Attractions adapter
 	ArrayAdapter<String> attractionsAdapter;
 
+	// No attractions text view 
+	TextView noAttractions; 
+	
 	// JSON variables 
 	static InputStream is = null;
 	static String jsonin = "";
@@ -86,19 +90,25 @@ public class ViewCategoryList extends Activity {
 				e.printStackTrace();
 			}	
      	
-		
-		// Initialize array adapter for categories 
-     	Log.i("ATT",ViewCategory.attractionsArray.toString());
-        attractionsAdapter = new AttractionAdapter(this,ViewCategory.attractionsArray,ViewCategory.primaryColor,ViewCategory.secondaryColor);
+		// Check that there are actually attractions for this category 
+		if(ViewCategory.attractionsArray.size()>0){
+			// Initialize array adapter for categories 
+			attractionsAdapter = new AttractionAdapter(this,ViewCategory.attractionsArray,ViewCategory.primaryColor,ViewCategory.secondaryColor);
         
-        // Attach the adapter to a ListView
-     	listview.setAdapter(attractionsAdapter);
+			// Attach the adapter to a ListView
+			listview.setAdapter(attractionsAdapter);
      	
-     	setupListViewListener();
+			setupListViewListener();
      	
-     	// Create global configuration and initialize ImageLoader with this config
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
-        ImageLoader.getInstance().init(config);	
+			// Create global configuration and initialize ImageLoader with this config
+			ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+			ImageLoader.getInstance().init(config);	
+		}
+		// Else, display a message that there are no attractions in this category
+		else{
+			noAttractions = (TextView) findViewById(R.id.noAttractions);
+			listview.setEmptyView(noAttractions);
+		}
 	}
     
 	private void setupListViewListener() { 
@@ -118,11 +128,8 @@ public class ViewCategoryList extends Activity {
 					sendJson(attractionName);
 				}
 					catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 				}
-				
-				//Log.d("jsonString",jsonin);
 				
 				//start a new intent for the attraction information
 				Intent intent = new Intent(ViewCategoryList.this, ViewAttractionInfo.class);
