@@ -37,13 +37,37 @@
         
 
     
+    <ImageView
+        android:id="@+id/openingHoursIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/location"
+        android:gravity="left"
+        android:src="@drawable/clock"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+         />
+    
     <TextView
          android:id="@+id/openingHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/location"
-        android:layout_margin="15dp" />
+        android:layout_marginLeft="73dp" 
+        android:layout_marginTop="30dp"/>
      
+    
+    <ImageView
+        android:id="@+id/urlIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/openingHours"
+        android:gravity="left"
+        android:src="@drawable/link5"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+         />
        
     
     <TextView
@@ -51,16 +75,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/openingHours"
-        android:layout_margin="15dp" />
+        android:layout_marginTop="33dp"
+        android:layout_marginLeft="73dp" />
 
-     
+    
+    <ImageView
+        android:id="@+id/descriptionIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/URL"
+        android:gravity="left"
+        android:src="@drawable/information3"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="25dp"
+         />
+    
     
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/URL"
-        android:layout_margin="15dp" />
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="73dp"
+        android:layout_marginRight="8dp" />
     
    <TextView android:id="@+id/reviewsTitle"
         android:text="Reviews:"
