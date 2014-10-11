@@ -20,10 +20,10 @@
         android:textSize="20dp" 
         android:layout_below="@+id/reviewTitle" />
         
-        <TextView
+        <ImageView
             android:id="@+id/reviewCategory"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:layout_below="@+id/reviewerName" />
 
 </RelativeLayout>
