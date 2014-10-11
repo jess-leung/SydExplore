@@ -19,5 +19,11 @@
         android:layout_toRightOf="@id/thumbnail"
         android:textSize="20dp" 
         android:layout_below="@+id/reviewTitle" />
+        
+        <TextView
+            android:id="@+id/reviewCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reviewerName" />
 
 </RelativeLayout>

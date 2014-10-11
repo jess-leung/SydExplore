@@ -26,6 +26,7 @@ public class FragmentReview extends Fragment{
 			String reviewText = reviewDetails.getString("reviewText");
 			String reviewRating = reviewDetails.getString("reviewRating");
 			String reviewerName = reviewDetails.getString("reviewerName");
+			
 
 			TextView title = (TextView)v.findViewById(R.id.reviewTitle);
 			title.setText(reviewTitle);

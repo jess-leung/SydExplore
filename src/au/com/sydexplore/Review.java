@@ -20,6 +20,9 @@ public class Review {
 	    //reviewer name
 	    public String reviewerName;
 	    
+	    //review category
+	    public String reviewCategory;
+	    
 	    //review date
 	    //public String reviewDate;
 	    
@@ -29,11 +32,12 @@ public class Review {
 	     * @param review text
 	     * @param review rating
 	     */
-	    public Review(String reviewerName, String reviewerText, String reviewRating, String reviewTitle) {
+	    public Review(String reviewerName, String reviewerText, String reviewRating, String reviewTitle, String reviewCategory) {
 	       this.reviewTitle = reviewTitle;
 	       this.reviewText = reviewText;
 	       this.reviewRating = reviewRating;
 	       this.reviewerName = reviewerName;
+	       this.reviewCategory = reviewCategory;
 	       //this.reviewDate = reviewDate;
 
 	    }
@@ -48,6 +52,7 @@ public class Review {
 	        	this.reviewText = object.getString("review_text");
 	        	this.reviewRating = object.getString("review_rating");
 	        	this.reviewTitle = object.getString("review_title");
+	        	this.reviewCategory = object.getString("review_category");
 	            
 	            
 	            
@@ -104,6 +109,14 @@ public class Review {
 	     */
 	    public String getReviewerName(){
 	    	return reviewerName;
+	    }
+	    
+	    /**
+	     * Return review category
+	     * @return
+	     */
+	    public String getReviewCategory(){
+	    	return reviewCategory;
 	    }
 	    
 	    /**

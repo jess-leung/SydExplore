@@ -43,6 +43,7 @@ public class ReviewAdapter extends ArrayAdapter{
 				holder = new ViewHolder();
 				holder.reviewTitle = (TextView) view.findViewById(R.id.reviewTitle);
 				holder.reviewerName = (TextView) view.findViewById(R.id.reviewerName);
+				holder.reviewCategory = (TextView) view.findViewById(R.id.reviewCategory);
 				view.setTag(holder);
 			}else{
 				holder = (ViewHolder) view.getTag();
@@ -51,6 +52,7 @@ public class ReviewAdapter extends ArrayAdapter{
 		  Review rev = reviewList.get(position);
 		  holder.reviewTitle.setText(rev.getReviewTitle());
 		  holder.reviewerName.setText(rev.getReviewerName());
+		  holder.reviewCategory.setText(rev.getReviewCategory());
 
 
 		  return view;
@@ -60,6 +62,7 @@ public class ReviewAdapter extends ArrayAdapter{
 		 static class ViewHolder {
 			TextView reviewTitle;
 			TextView reviewerName;
+			TextView reviewCategory;
 			 }
 		 
 
