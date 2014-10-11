@@ -59,34 +59,44 @@ public class ReviewAdapter extends ArrayAdapter{
 		  
 		  String category = rev.getReviewCategory();
 		  String image = "";
-		  Log.d("CATEGORYREVIEW",category);
+		  int colour = 65;
 		  
 		  if (category.equals("Adventurous")){
-			  image = "trekking"; 
+			  image = "trekking";
+			  colour=R.drawable.sunsetOrange;		 
 		  } else if (category.equals("Social")){
 			  image="party1";
+			  colour=R.drawable.ripelemon;
 		  } else if (category.equals("Cultural")){
 			  image="greek1";
+			  colour=R.drawable.jade;
 		  } else if (category.equals("Historical")){
 			  image="time12";
+			  colour=R.drawable.crusta;
 		  } else if (category.equals("Education")){
 			  image="books30";
+			  colour=R.drawable.jacksonspurple;
 		  } else if (category.equals("Hungry")){
 			  image="plate7";
+			  colour=R.drawable.california;
 		  } else if (category.equals("Natural")){
 			  image="tree101";
+			  colour=R.drawable.mountainmeadow;
 		  } else if (category.equals("Lazy")){
 			  image="man271";
+			  colour=R.drawable.curiousblue;
 		  } else if (category.equals("Luxurious")){
 			  image="banknotes";
+			  colour=R.drawable.rebeccapurple;
 		  }
 		  
-		  		  
+		  
 		  String uri = "@drawable/"+image; 
 		  int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
 		  Drawable res = context.getResources().getDrawable(imageResource);
 		  holder.reviewCategory.setImageDrawable(res);
-
+		  holder.reviewCategory.setBackgroundResource(colour);
+		  
 		  return view;
 		}
 		
