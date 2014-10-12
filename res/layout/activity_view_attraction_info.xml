@@ -25,6 +25,36 @@
         android:padding="10dp" />
 
     
+    <ImageView 
+        android:id="@+id/locationIcon"
+        android:layout_width="43dp" 
+        android:layout_height="51dp" 
+        android:layout_below="@+id/name"
+        android:gravity="left" 
+        android:src="@drawable/sydexplorelogo" 
+        android:background="#000000"
+        android:layout_marginLeft="15dp"
+        />
+    
+        <ImageView 
+        android:id="@+id/locationBack"
+        android:layout_width="15dp" 
+        android:layout_height="51dp" 
+        android:layout_below="@+id/name"
+        android:gravity="left" 
+        android:background="#000000"
+         />
+        
+                <ImageView 
+        android:id="@+id/locationBack1"
+        android:layout_width="10dp" 
+        android:layout_height="51dp" 
+        android:layout_below="@+id/name"
+        android:gravity="left" 
+        android:background="#000000"
+        android:layout_marginLeft="58dp" />
+    
+    
     <TextView
          android:id="@+id/location"
         android:layout_width="fill_parent"
@@ -33,7 +63,8 @@
         android:textColor="#04c7d9"
         android:textSize="15sp"
         android:background="#000000"
-        android:padding="15dp" />
+        android:padding="15dp"
+        android:layout_marginLeft="65dp" />
         
 
     
