@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -92,11 +93,10 @@ public class ViewAttractionInfo extends Activity {
         		.cacheInMemory(true)
         		.cacheOnDisk(true)
         		.build();
-		
+        		
         //display the image
         ImageView imageviewname = (ImageView) findViewById(R.id.image);
         ImageLoader.getInstance().displayImage("https://sydexplore-attractions.s3.amazonaws.com"+image, imageviewname, options);
-        
         
         //display the attraction name
         TextView textviewname = (TextView) findViewById(R.id.name);
