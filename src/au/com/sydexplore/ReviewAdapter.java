@@ -53,8 +53,10 @@ public class ReviewAdapter extends ArrayAdapter{
 			}
 	  
 		  Review rev = reviewList.get(position);
-		  holder.reviewTitle.setText(rev.getReviewTitle());
-		  holder.reviewerName.setText(rev.getReviewerName());
+		  String title = "''" + rev.getReviewTitle() + "''";
+		  holder.reviewTitle.setText(title);
+		  String reviewer = "Reviewer: " + rev.getReviewerName();
+		  holder.reviewerName.setText(reviewer);
 		  //holder.reviewCategory.setText(rev.getReviewCategory());
 		  
 		  String category = rev.getReviewCategory();
