@@ -26,4 +26,5 @@
 	<drawable name="jellybean">#2574A9</drawable>
 	<drawable name="crusta">#F2784B</drawable>
 	<drawable name="cinnabar">#E74C3C</drawable>
+	<drawable name="weird_blue">#34495E</drawable>
 </resources>
