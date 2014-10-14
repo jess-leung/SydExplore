@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#111111">
+    android:background="@drawable/fragment_background">
  
     <LinearLayout
         android:layout_width="wrap_content" 
@@ -11,17 +11,17 @@
         android:orientation="vertical"
 		android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginTop="60dp"
-        android:background="#D3D3D3"
+        android:background="@drawable/white"
         android:padding="15dp" >
     
     <TextView
         android:id="@+id/reviewTitle" 
         android:layout_width="fill_parent"
      	android:layout_height="wrap_content"
-     	android:textSize="40dp" 
+     	android:textSize="30dp" 
      	android:layout_marginLeft="15dp"
      	android:layout_marginTop="10dp"
-     	android:textColor="#111111" />
+     	android:textColor="@drawable/jade" />
 
 
     
