@@ -10,9 +10,12 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -35,6 +38,7 @@ public class ReviewAdapter extends ArrayAdapter{
 			this.context = context;
 		}
 
+		@SuppressWarnings("deprecation")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			View view = convertView;
@@ -46,7 +50,6 @@ public class ReviewAdapter extends ArrayAdapter{
 				holder.reviewerName = (TextView) view.findViewById(R.id.reviewerName);
 				holder.reviewCategory = (ImageView) view.findViewById(R.id.reviewCategory);
 				holder.positionHolder = position;
-				//holder.reviewCategory = (TextView) view.findViewById(R.id.reviewCategory);
 				Log.i("position",String.valueOf(holder.positionHolder));
 				view.setTag(holder);
 				
@@ -57,9 +60,8 @@ public class ReviewAdapter extends ArrayAdapter{
 		  Review rev = reviewList.get(position);
 		  String title = "''" + rev.getReviewTitle() + "''";
 		  holder.reviewTitle.setText(title);
-		  String reviewer = "Reviewer: " + rev.getReviewerName();
+		  String reviewer = rev.getReviewerName();
 		  holder.reviewerName.setText(reviewer);
-		  //holder.reviewCategory.setText(rev.getReviewCategory());
 		  
 		  String category = rev.getReviewCategory();
 		  String image = "";
@@ -98,13 +100,11 @@ public class ReviewAdapter extends ArrayAdapter{
 		  int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
 		  Drawable res = context.getResources().getDrawable(imageResource);
 		  holder.reviewCategory.setImageDrawable(res);
-		  holder.reviewCategory.setBackgroundResource(colour);
+		  GradientDrawable bgShape = (GradientDrawable) holder.reviewCategory.getBackground();
+		  bgShape.setColor(colour);
 		  
 		  return view;
 		}
-		
-		
-		
 		
 		 public class ViewHold {
 			TextView reviewTitle;

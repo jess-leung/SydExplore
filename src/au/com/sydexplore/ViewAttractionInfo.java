@@ -110,11 +110,26 @@ public class ViewAttractionInfo extends Activity {
 		
 		//display attraction opening hours
 		TextView textviewopeninghours = (TextView) findViewById(R.id.openingHours);
-		textviewopeninghours.setText(openingHours);
+		if (openingHours.equals("")){
+			ImageView imgViewHours = (ImageView) findViewById(R.id.openingHoursIcon);
+			imgViewHours.setVisibility(View.GONE);
+			textviewopeninghours.setVisibility(View.GONE);
+		}
+		else{
+			textviewopeninghours.setText(openingHours);
+		}
 		
 		//display URL of the attraction
 		TextView textviewurl = (TextView) findViewById(R.id.URL);
-		textviewurl.setText(URL);
+		if (URL.equals("")){
+			ImageView imgViewUrl = (ImageView) findViewById(R.id.urlIcon);
+			imgViewUrl.setVisibility(View.GONE);
+			textviewurl.setVisibility(View.GONE);
+		}
+		else{
+			textviewurl.setText(URL);
+		}
+		
 		
 		//display the description of the attraction
 		TextView textviewdescription = (TextView) findViewById(R.id.description);
@@ -199,74 +214,11 @@ public class ViewAttractionInfo extends Activity {
 		
 
 	}
-
-
-//	private void setupListViewListener() { 
-//		listview.setOnClickListener(new View.OnClickListener(){
-//	        @Override
-//	        public void onClick(View v){  	
-//	        	Log.i("LISTVIEW", "TESTING LBAH BLAH BLAH");
-//	        	ReviewAdapter.ViewHolder holder = (ReviewAdapter.ViewHolder) v.getTag();
-//	        	int holderPosition = holder.positionHolder;
-////	        	Log.i("POS",String.valueOf(holderPosition));
-//	        	//Get the review that was clicked on
-//				Review reviewClickedOn = reviewsArray.get(holderPosition);
-//								
-//				fragmentmanager = getFragmentManager();
-//				fragmenttransaction = fragmentmanager.beginTransaction();
-//				FragmentReview fragmentreview = new FragmentReview();
-//				
-//				//send the details of the review clicked to the ReviewFragment
-//				final Bundle bundle = new Bundle();
-//				bundle.putString("reviewTitle",reviewClickedOn.getReviewTitle());
-//				bundle.putString("reviewText",reviewClickedOn.getReviewText());
-//				bundle.putString("reviewRating",reviewClickedOn.getReviewRating());
-//				bundle.putString("reviewerName",reviewClickedOn.getReviewerName());
-//				fragmentreview.setArguments(bundle);
-//				
-//				fragmenttransaction.add(R.id.fragment, fragmentreview);
-//				fragmenttransaction.addToBackStack("review");
-//				fragmenttransaction.commit();
-//	        }
-//	    });
-//	}
-		
-//		listview.setOnItemClickListener(new OnItemClickListener() { 
-//			@Override
-//			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
-//				
-//				//Get the review that was clicked on
-//				Review reviewClickedOn = reviewsArray.get(position);
-//								
-//				fragmentmanager = getFragmentManager();
-//				fragmenttransaction = fragmentmanager.beginTransaction();
-//				FragmentReview fragmentreview = new FragmentReview();
-//				
-//				//send the details of the review clicked to the ReviewFragment
-//				final Bundle bundle = new Bundle();
-//				bundle.putString("reviewTitle",reviewClickedOn.getReviewTitle());
-//				bundle.putString("reviewText",reviewClickedOn.getReviewText());
-//				bundle.putString("reviewRating",reviewClickedOn.getReviewRating());
-//				bundle.putString("reviewerName",reviewClickedOn.getReviewerName());
-//				fragmentreview.setArguments(bundle);
-//				
-//				fragmenttransaction.add(R.id.fragment, fragmentreview);
-//				fragmenttransaction.addToBackStack("review");
-//				fragmenttransaction.commit();
-//				
-//			} 
-//		}); 
-		
-	
-	
 	
 	public void closeFragment(View v){
 		
 		fragmentmanager.popBackStack();
 	}
-
-	
-
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
