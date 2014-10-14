@@ -38,18 +38,20 @@ public class ReviewAdapter extends ArrayAdapter{
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			View view = convertView;
-			ViewHolder holder = null;
+			ViewHold holder = null;
 			if (view == null) {
 				view = LayoutInflater.from(context).inflate(R.layout.activity_review_row, null, false);
-				holder = new ViewHolder();
+				holder = new ViewHold();
 				holder.reviewTitle = (TextView) view.findViewById(R.id.reviewTitle);
 				holder.reviewerName = (TextView) view.findViewById(R.id.reviewerName);
 				holder.reviewCategory = (ImageView) view.findViewById(R.id.reviewCategory);
+				holder.positionHolder = position;
 				//holder.reviewCategory = (TextView) view.findViewById(R.id.reviewCategory);
-				
+				Log.i("position",String.valueOf(holder.positionHolder));
 				view.setTag(holder);
+				
 			}else{
-				holder = (ViewHolder) view.getTag();
+				holder = (ViewHold) view.getTag();
 			}
 	  
 		  Review rev = reviewList.get(position);
@@ -92,7 +94,6 @@ public class ReviewAdapter extends ArrayAdapter{
 			  colour=R.drawable.rebeccapurple;
 		  }
 		  
-		  
 		  String uri = "@drawable/"+image; 
 		  int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
 		  Drawable res = context.getResources().getDrawable(imageResource);
@@ -103,18 +104,13 @@ public class ReviewAdapter extends ArrayAdapter{
 		}
 		
 		
-		 static class ViewHolder {
+		
+		
+		 public class ViewHold {
 			TextView reviewTitle;
 			TextView reviewerName;
 			ImageView reviewCategory;
-			 }
-		 
-
-
-	
-	
-	
-	
-	
-	
+			int positionHolder;
+			
+		 }
 }

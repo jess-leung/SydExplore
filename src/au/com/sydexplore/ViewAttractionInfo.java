@@ -26,11 +26,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import au.com.sydexplore.CategoryAdapter.ViewHolder;
+import au.com.sydexplore.ReviewAdapter.ViewHold;
 
 public class ViewAttractionInfo extends Activity {
 	
@@ -119,7 +121,7 @@ public class ViewAttractionInfo extends Activity {
 		textviewdescription.setText(description);
 		
 		// reference the "listview" variable to the id-"listview" in the layout
-     	listview = (ListView) findViewById(R.id.reviewList);
+		LinearLayout listview = (LinearLayout) findViewById(R.id.reviewList);
      	
      	// Get the data from the main screen
         String jsonString = getIntent().getStringExtra("jsonString");
@@ -162,43 +164,100 @@ public class ViewAttractionInfo extends Activity {
         reviewsAdapter = new ReviewAdapter(this,reviewsArray);
         
         // Attach the adapter to a ListView
-     	listview.setAdapter(reviewsAdapter);
+        final int adapterCount = reviewsAdapter.getCount();
+
+        for (int i = 0; i < adapterCount; i++) {
+          View item = reviewsAdapter.getView(i, null, null);
+          listview.addView(item);
+  		  //set up the fragments for displaying reviews
+          item.setOnClickListener(new View.OnClickListener(){
+  	        @Override
+  	        public void onClick(View v){  	
+  	        	ViewHold holder = (ViewHold) v.getTag();
+  	        	int holderPosition = holder.positionHolder;
+  	        	//Get the review that was clicked on
+  				Review reviewClickedOn = reviewsArray.get(holderPosition);
+  								
+  				fragmentmanager = getFragmentManager();
+  				fragmenttransaction = fragmentmanager.beginTransaction();
+  				FragmentReview fragmentreview = new FragmentReview();
+  				
+  				//send the details of the review clicked to the ReviewFragment
+  				final Bundle bundle = new Bundle();
+  				bundle.putString("reviewTitle",reviewClickedOn.getReviewTitle());
+  				bundle.putString("reviewText",reviewClickedOn.getReviewText());
+  				bundle.putString("reviewRating",reviewClickedOn.getReviewRating());
+  				bundle.putString("reviewerName",reviewClickedOn.getReviewerName());
+  				fragmentreview.setArguments(bundle);
+  				
+  				fragmenttransaction.add(R.id.fragment, fragmentreview);
+  				fragmenttransaction.addToBackStack("review");
+  				fragmenttransaction.commit();
+  	        }
+          });
+        }
 		
-		//set up the fragments for displaying reviews
-     	setupListViewListener();
-		
+
 	}
 
-	
-	
-	private void setupListViewListener() { 
-		listview.setOnItemClickListener(new OnItemClickListener() { 
-			@Override
-			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
-				
-				//Get the review that was clicked on
-				Review reviewClickedOn = reviewsArray.get(position);
-								
-				fragmentmanager = getFragmentManager();
-				fragmenttransaction = fragmentmanager.beginTransaction();
-				FragmentReview fragmentreview = new FragmentReview();
-				
-				//send the details of the review clicked to the ReviewFragment
-				final Bundle bundle = new Bundle();
-				bundle.putString("reviewTitle",reviewClickedOn.getReviewTitle());
-				bundle.putString("reviewText",reviewClickedOn.getReviewText());
-				bundle.putString("reviewRating",reviewClickedOn.getReviewRating());
-				bundle.putString("reviewerName",reviewClickedOn.getReviewerName());
-				fragmentreview.setArguments(bundle);
-				
-				fragmenttransaction.add(R.id.fragment, fragmentreview);
-				fragmenttransaction.addToBackStack("review");
-				fragmenttransaction.commit();
-				
-			} 
-		}); 
+
+//	private void setupListViewListener() { 
+//		listview.setOnClickListener(new View.OnClickListener(){
+//	        @Override
+//	        public void onClick(View v){  	
+//	        	Log.i("LISTVIEW", "TESTING LBAH BLAH BLAH");
+//	        	ReviewAdapter.ViewHolder holder = (ReviewAdapter.ViewHolder) v.getTag();
+//	        	int holderPosition = holder.positionHolder;
+////	        	Log.i("POS",String.valueOf(holderPosition));
+//	        	//Get the review that was clicked on
+//				Review reviewClickedOn = reviewsArray.get(holderPosition);
+//								
+//				fragmentmanager = getFragmentManager();
+//				fragmenttransaction = fragmentmanager.beginTransaction();
+//				FragmentReview fragmentreview = new FragmentReview();
+//				
+//				//send the details of the review clicked to the ReviewFragment
+//				final Bundle bundle = new Bundle();
+//				bundle.putString("reviewTitle",reviewClickedOn.getReviewTitle());
+//				bundle.putString("reviewText",reviewClickedOn.getReviewText());
+//				bundle.putString("reviewRating",reviewClickedOn.getReviewRating());
+//				bundle.putString("reviewerName",reviewClickedOn.getReviewerName());
+//				fragmentreview.setArguments(bundle);
+//				
+//				fragmenttransaction.add(R.id.fragment, fragmentreview);
+//				fragmenttransaction.addToBackStack("review");
+//				fragmenttransaction.commit();
+//	        }
+//	    });
+//	}
 		
-	}
+//		listview.setOnItemClickListener(new OnItemClickListener() { 
+//			@Override
+//			public void onItemClick(AdapterView <? > parent, View view, int position, long id) { 
+//				
+//				//Get the review that was clicked on
+//				Review reviewClickedOn = reviewsArray.get(position);
+//								
+//				fragmentmanager = getFragmentManager();
+//				fragmenttransaction = fragmentmanager.beginTransaction();
+//				FragmentReview fragmentreview = new FragmentReview();
+//				
+//				//send the details of the review clicked to the ReviewFragment
+//				final Bundle bundle = new Bundle();
+//				bundle.putString("reviewTitle",reviewClickedOn.getReviewTitle());
+//				bundle.putString("reviewText",reviewClickedOn.getReviewText());
+//				bundle.putString("reviewRating",reviewClickedOn.getReviewRating());
+//				bundle.putString("reviewerName",reviewClickedOn.getReviewerName());
+//				fragmentreview.setArguments(bundle);
+//				
+//				fragmenttransaction.add(R.id.fragment, fragmentreview);
+//				fragmenttransaction.addToBackStack("review");
+//				fragmenttransaction.commit();
+//				
+//			} 
+//		}); 
+		
+	
 	
 	
 	public void closeFragment(View v){
