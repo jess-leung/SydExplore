@@ -69,40 +69,46 @@ public class ReviewAdapter extends ArrayAdapter{
 		  
 		  if (category.equals("Adventurous")){
 			  image = "trekking";
-			  colour=R.drawable.sunsetOrange;		 
+			  colour=R.drawable.sunsetOrange;	
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_red));
 		  } else if (category.equals("Social")){
 			  image="party1";
 			  colour=R.drawable.ripelemon;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_ripelemon));
 		  } else if (category.equals("Cultural")){
 			  image="greek1";
 			  colour=R.drawable.jade;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_jade));
 		  } else if (category.equals("Historical")){
 			  image="time12";
 			  colour=R.drawable.crusta;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_crusta));
 		  } else if (category.equals("Education")){
 			  image="books30";
 			  colour=R.drawable.jacksonspurple;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_jacksonspurple));
 		  } else if (category.equals("Hungry")){
 			  image="plate7";
 			  colour=R.drawable.california;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_california));
 		  } else if (category.equals("Natural")){
 			  image="tree101";
 			  colour=R.drawable.mountainmeadow;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_mountainmeadow));
 		  } else if (category.equals("Lazy")){
 			  image="man271";
 			  colour=R.drawable.curiousblue;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_curiousblue));
 		  } else if (category.equals("Luxurious")){
 			  image="banknotes";
 			  colour=R.drawable.rebeccapurple;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_rebeccapurple));
 		  }
 		  
 		  String uri = "@drawable/"+image; 
 		  int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
 		  Drawable res = context.getResources().getDrawable(imageResource);
 		  holder.reviewCategory.setImageDrawable(res);
-		  GradientDrawable bgShape = (GradientDrawable) holder.reviewCategory.getBackground();
-		  bgShape.setColor(colour);
-		  
 		  return view;
 		}
 		
@@ -111,6 +117,5 @@ public class ReviewAdapter extends ArrayAdapter{
 			TextView reviewerName;
 			ImageView reviewCategory;
 			int positionHolder;
-			
 		 }
 }
