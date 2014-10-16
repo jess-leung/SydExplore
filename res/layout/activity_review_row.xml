@@ -24,6 +24,14 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp" />
  
+    <LinearLayout
+        android:id="@+id/secondRow"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/reviewTitle"
+        android:layout_toRightOf="@+id/reviewCategory"
+        android:layout_marginBottom="10dp">
+    
         <TextView
         android:id="@+id/reviewerName"
         android:layout_width="wrap_content"
@@ -31,7 +39,6 @@
         android:textSize="15dp" 
         android:layout_marginLeft="10dp"
         android:textStyle="italic"
-        android:layout_marginBottom="50dp"
         android:layout_below="@+id/reviewTitle"
         android:layout_toRightOf="@+id/reviewCategory" />
         
@@ -40,10 +47,10 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
    	    	android:layout_height="wrap_content"
-   	    	android:rating="3"
-	    	android:isIndicator="true" 
-	    	/>
+	    	android:layout_below="@+id/reviewTitle"
+	    	android:layout_alignLeft="@+id/reviewerName"
+	    	android:layout_marginLeft="25dp"/>
         
-
+</LinearLayout>
 
 </RelativeLayout>
