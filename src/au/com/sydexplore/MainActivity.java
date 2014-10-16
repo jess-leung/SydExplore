@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -85,6 +86,55 @@ public class MainActivity extends Activity {
     }
     
     @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+    	MenuInflater menuinf = getMenuInflater();
+    	menuinf.inflate(R.menu.menu, menu);
+    	return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menu){
+    	super.onOptionsItemSelected(menu);
+    	
+    	String category="";
+    	switch(menu.getItemId()){
+    		case R.id.All:
+    			displayAttractionPage("All");
+    			return true;
+    		case R.id.Adventurous:
+    			displayAttractionPage("Adventurous");
+    			return true;
+    		case R.id.Cultural:
+    			displayAttractionPage("Cultural");
+    			return true;
+    		case R.id.Education:
+    			displayAttractionPage("Education");
+    			return true;
+    		case R.id.Historical:
+    			displayAttractionPage("Historical");
+    			return true;
+    		case R.id.Hungry:
+    			displayAttractionPage("Hungry");
+    			return true;
+    		case R.id.Lazy:
+    			displayAttractionPage("Lazy");
+    			return true;
+    		case R.id.Luxurious:
+    			displayAttractionPage("Luxurious");
+    			return true;
+    		case R.id.Natural:
+    			displayAttractionPage("Natural");
+    			return true;
+    		case R.id.Social:
+    			displayAttractionPage("Social");
+    			return true;
+    	}
+    	return false;
+    	
+
+    }
+    
+    @Override
     protected void onResume()
     {   
         // TODO Auto-generated method stub
@@ -95,6 +145,43 @@ public class MainActivity extends Activity {
      		imageView.setBackgroundResource(oldColor);
      		textView.setBackgroundResource(oldColor);
         }
+    }
+    
+    
+    /**
+     * Displays the category page when the menu item is clicked
+     * @param categoryClickedOn
+     */
+    public void displayAttractionPage(String categoryClickedOn){
+     	
+    	try {
+			sendJson(categoryClickedOn);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+		Intent intent = new Intent(MainActivity.this, ViewCategory.class); 
+		if (intent != null) { 
+			// put "extras" into the bundle for access in the edit activity
+			intent.putExtra("jsonString",jsonin); 
+			
+			int i;
+			int secondaryColor = 0;
+			for (i=0; i<10; i++){
+				Category cat = categoryArray.get(i);
+				if (cat.getName().equals(categoryClickedOn)){
+					oldColor = cat.getColor();
+					secondaryColor = cat.secondaryColor;
+				}
+			}
+			
+			intent.putExtra("primaryColor", oldColor);
+			intent.putExtra("secondaryColor", secondaryColor);
+			// brings up the second activity
+			startActivity(intent); 
+		} 
+    	
     }
     
 	private void setupListViewListener() { 

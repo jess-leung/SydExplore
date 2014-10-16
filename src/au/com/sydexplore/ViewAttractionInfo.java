@@ -17,9 +17,12 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,6 +31,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
@@ -150,27 +154,35 @@ public class ViewAttractionInfo extends Activity {
      	// JSON Object parsing 
      	JSONObject obj;
      	JSONArray data = null; 
-     	
+     	float average = 0;
 		try {
 			// Load the JSON string 
 			obj = new JSONObject(jsonString);
 			data = obj.getJSONArray("reviews");
 			Log.d("data",data.toString());
 			final int n = data.length();
-			
+			float rating = 0;
 			// If we successfully load the data from the JSON 
 			// then add to the array 
 			for (int i = 0; i < n; ++i) {
 				final JSONObject review = data.getJSONObject(i);
 				reviewsArray.add(new Review(review));
+				Review rev = reviewsArray.get(i);
+				String avg = rev.getReviewRating();
+				rating = rating + Float.parseFloat(avg);
 				
 			}
-			
+			average = rating/n;
 			//Log.d("Review Array", reviewsArray.get(0).getReviewerName());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
+		
+		//set the rating bar for the average rating of reviews
+		RatingBar starRating = (RatingBar)findViewById(R.id.average);
+		starRating.setRating(average);
+	
 		
 		Log.d("Testing","TESTING");
 		//Log.d("First review",reviewsArray);
@@ -214,6 +226,13 @@ public class ViewAttractionInfo extends Activity {
 		
 
 	}
+	
+	   @Override
+	    public boolean onCreateOptionsMenu(Menu menu){
+	    	MenuInflater menuinf = getMenuInflater();
+	    	menuinf.inflate(R.menu.menu, menu);
+	    	return true;
+	    }
 	
 	public void closeFragment(View v){
 		

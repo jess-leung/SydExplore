@@ -23,7 +23,7 @@
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp" />
-    
+ 
         <TextView
         android:id="@+id/reviewerName"
         android:layout_width="wrap_content"
@@ -34,6 +34,15 @@
         android:layout_marginBottom="50dp"
         android:layout_below="@+id/reviewTitle"
         android:layout_toRightOf="@+id/reviewCategory" />
+        
+        <RatingBar
+            android:id="@+id/reviewRating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+   	    	android:layout_height="wrap_content"
+   	    	android:rating="3"
+	    	android:isIndicator="true" 
+	    	/>
         
 
 

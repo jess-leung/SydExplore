@@ -11,6 +11,9 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -31,6 +34,7 @@ public class ViewCategory extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_tab);
         
+             
         // Get JSON string from intent data 
         jsonString = getIntent().getStringExtra("jsonString");
         jsonString = "{ attractions: "+jsonString+" }";
@@ -57,5 +61,13 @@ public class ViewCategory extends TabActivity {
         // Adding all TabSpec to TabHost
         tabHost.addTab(listspec); // Adding list tab
         tabHost.addTab(mapspec); // Adding map tab
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+    	MenuInflater menuinf = getMenuInflater();
+    	menuinf.inflate(R.menu.menu, menu);
+   	
+    	return true;
     }
 }

@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 
@@ -53,6 +54,14 @@ public class ReviewAdapter extends ArrayAdapter{
 				Log.i("position",String.valueOf(holder.positionHolder));
 				view.setTag(holder);
 				
+				
+				
+				
+				
+				
+				
+				
+				
 			}else{
 				holder = (ViewHold) view.getTag();
 			}
@@ -62,6 +71,12 @@ public class ReviewAdapter extends ArrayAdapter{
 		  holder.reviewTitle.setText(title);
 		  String reviewer = rev.getReviewerName();
 		  holder.reviewerName.setText(reviewer);
+		  
+		  String rating = rev.getReviewRating();
+		  Float stars = Float.parseFloat(rating);
+		  RatingBar starRating = (RatingBar)view.findViewById(R.id.reviewRating);
+			starRating.setRating(stars);
+		  
 		  
 		  String category = rev.getReviewCategory();
 		  String image = "";
@@ -113,6 +128,7 @@ public class ReviewAdapter extends ArrayAdapter{
 		}
 		
 		 public class ViewHold {
+			public RatingBar reviewRating;
 			TextView reviewTitle;
 			TextView reviewerName;
 			ImageView reviewCategory;
