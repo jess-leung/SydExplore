@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -18,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -25,8 +28,11 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -62,13 +68,16 @@ public class ViewCategoryList extends Activity {
         
         // Set content view 
         setContentView(R.layout.activity_view_category);
- 
+     	
         // reference the "listview" variable to the id-"listview" in the layout
      	listview = (ListView) findViewById(R.id.attractionsList);
      	
 	     	// JSON Object parsing 
 	     	JSONObject obj;
 	     	JSONArray data = null; 
+	     	
+	     	// Flag for location 
+	     	boolean hasLocation = false; 
 	     	
 			try {
 				// Load the JSON string 
@@ -78,11 +87,52 @@ public class ViewCategoryList extends Activity {
 				
 				ViewCategory.attractionsArray = new ArrayList<Attraction>();
 				
+				LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
+				
+				// getting GPS status
+	            boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+	            // getting network status
+	            boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+	            
+	            Log.i("isGPSEnabled",String.valueOf(isGPSEnabled));
+	            Log.i("isNetwork",String.valueOf(isNetworkEnabled));
+	            
+	            Location location = null;
+	            		
+	            if (isGPSEnabled){
+	            	location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+	            }
+	            
+	            if(isNetworkEnabled){
+	            	location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+	            }
+				
+				double longitude = 0.0; 
+				double latitude = 0.0; 
+				
+				// Get current location 
+				if (location != null){
+					longitude = location.getLongitude();
+					latitude = location.getLatitude();
+					hasLocation = true;
+				}
+				
 				// If we successfully load the data from the JSON 
 				// then add to the array 
 				for (int i = 0; i < n; ++i) {
 					final JSONObject attraction = data.getJSONObject(i);
 					Attraction newAttraction = new Attraction(attraction);
+					if (hasLocation){
+						Location locationA = new Location("point A");
+						locationA.setLatitude(latitude);
+						locationA.setLongitude(longitude);
+						Location locationB = new Location("point B");
+						locationB.setLatitude(newAttraction.latitude);
+						locationB.setLongitude(newAttraction.longitude);
+						float distance = locationA.distanceTo(locationB);
+						newAttraction.currentDist=distance;
+					}
 					ViewCategory.attractionsArray.add(newAttraction);
 				}
 			} catch (JSONException e) {
@@ -92,6 +142,22 @@ public class ViewCategoryList extends Activity {
      	
 		// Check that there are actually attractions for this category 
 		if(ViewCategory.attractionsArray.size()>0){
+			if (hasLocation==true){
+				Collections.sort(ViewCategory.attractionsArray, new Comparator<Attraction>() {
+			    public int compare(Attraction a1, Attraction a2) {
+			        return Double.compare(a1.currentDist,a2.currentDist);
+			    }
+				});
+			}
+			else{
+				Collections.sort(ViewCategory.attractionsArray, new Comparator<Attraction>() {
+				    public int compare(Attraction a1, Attraction a2) {
+				        return a1.name.compareTo(a2.name);
+				    }
+				});
+			}
+			
+			
 			// Initialize array adapter for categories 
 			attractionsAdapter = new AttractionAdapter(this,ViewCategory.attractionsArray,ViewCategory.primaryColor,ViewCategory.secondaryColor);
         

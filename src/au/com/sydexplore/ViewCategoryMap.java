@@ -57,8 +57,7 @@ public class ViewCategoryMap extends Activity implements GooglePlayServicesClien
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_view_category_map);
 
-			 // Connect the location client to start receiving updates
-		    mLocationClient = new LocationClient(this, this, this);
+			mLocationClient = new LocationClient(this, this, this);
 		    
 		    try {
 	            // Loading map
@@ -104,7 +103,6 @@ public class ViewCategoryMap extends Activity implements GooglePlayServicesClien
 			googleMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 				    @Override
 				    public void onInfoWindowClick(Marker marker) {
-				    	Log.i("Map Marker",marker.getTitle());
 				    	String thisMarkerTItle = marker.getTitle();
 				    	for (Attraction att:ViewCategory.attractionsArray){
 				    		if (att.getName().equals(thisMarkerTItle)){
@@ -132,9 +130,6 @@ public class ViewCategoryMap extends Activity implements GooglePlayServicesClien
 								}
 				    		}
 				    	}
-//				    	Intent in=new Intent(getApplicationContext(),first.class);
-//				    	in.putExtra("driverid", marker.getSnippet());
-//				    	startActivity(in);  
 				    }
 			});         
 			

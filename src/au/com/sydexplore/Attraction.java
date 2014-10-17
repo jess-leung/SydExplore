@@ -33,6 +33,9 @@ public class Attraction implements Serializable {
     public double longitude; 
     public double latitude;
     
+    // current distance
+    public double currentDist; 
+    
     // colors 
     public int primaryColor;
     public int secondaryColor;

@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.android.gms.location.LocationClient;
+
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +36,6 @@ public class ViewCategory extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_tab);
         
-             
         // Get JSON string from intent data 
         jsonString = getIntent().getStringExtra("jsonString");
         jsonString = "{ attractions: "+jsonString+" }";
