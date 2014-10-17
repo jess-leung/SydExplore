@@ -57,6 +57,7 @@ public class AttractionAdapter extends ArrayAdapter {
 			holder.location = (TextView) view.findViewById(R.id.location);
 			holder.thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
 			holder.rect = (ImageView) view.findViewById(R.id.rectimage);
+			holder.distance = (TextView) view.findViewById(R.id.distance);
 			view.setTag(holder);
 		}else{
 			holder = (ViewHolder) view.getTag();
@@ -66,6 +67,11 @@ public class AttractionAdapter extends ArrayAdapter {
 //	  holder.rightIcon.setImageDrawable(feed.getUserIcon());
 	  holder.attractionName.setText(att.getName());
 	  holder.location.setText(att.getLocation());
+	  if(att.currentDist!=0){
+		  int d = (int) att.currentDist/1000;
+		  holder.distance.setText(String.valueOf(d)+"km");
+	  }
+	  
 	  ImageLoader.getInstance().displayImage("https://sydexplore-attractions.s3.amazonaws.com"+att.getThumbnailUrl(), holder.thumbnail, options);
 	  // Set even strip rectangle color 
 	  if(position%2==0){
@@ -81,6 +87,7 @@ public class AttractionAdapter extends ArrayAdapter {
 	//	  ImageView rightIcon;
 		  TextView attractionName;
 		  TextView location;
+		  TextView distance;
 		  ImageView thumbnail; 
 		  ImageView rect;
 	 }
