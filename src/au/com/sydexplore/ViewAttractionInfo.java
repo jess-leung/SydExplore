@@ -70,6 +70,9 @@ public class ViewAttractionInfo extends Activity {
 	// ImageLoader options
 	DisplayImageOptions options;
 	
+	//TextView for no reviews
+	TextView noReviews;
+	
 	//Fragmemt for reiew
 	FragmentManager fragmentmanager;
 	FragmentTransaction fragmenttransaction;
@@ -182,10 +185,9 @@ public class ViewAttractionInfo extends Activity {
 		//set the rating bar for the average rating of reviews
 		RatingBar starRating = (RatingBar)findViewById(R.id.average);
 		starRating.setRating(average);
-	
 		
-		Log.d("Testing","TESTING");
-		//Log.d("First review",reviewsArray);
+		//Check that there are reviews for this attraction
+		if (reviewsArray.size()>0){
 		
 		// Initialize array adapter for reviews
         reviewsAdapter = new ReviewAdapter(this,reviewsArray);
@@ -223,7 +225,11 @@ public class ViewAttractionInfo extends Activity {
   	        }
           });
         }
-		
+		}
+		else{
+			noReviews = (TextView) findViewById(R.id.noReviews);
+			noReviews.setText("No reviews for this attraction");
+		}
 
 	}
 	
