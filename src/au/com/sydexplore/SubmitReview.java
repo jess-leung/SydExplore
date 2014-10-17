@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -38,6 +39,9 @@ public class SubmitReview extends Activity {
 		
 		// populate the screen using the layout
 		setContentView(R.layout.activity_submit_review);
+		
+		//set the back button in the action bar
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		// get the input fields 
 		submitReviewTitle = (TextView) findViewById(R.id.submitReviewTitle);
@@ -140,5 +144,18 @@ public class SubmitReview extends Activity {
 			}
 		};
 		t.start();      
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		onBackPressed();
+		return super.onOptionsItemSelected(item);
 	}
 }

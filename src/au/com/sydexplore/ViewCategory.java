@@ -36,6 +36,9 @@ public class ViewCategory extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_tab);
         
+		//set the back button in the action bar
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+        
         // Get JSON string from intent data 
         jsonString = getIntent().getStringExtra("jsonString");
         jsonString = "{ attractions: "+jsonString+" }";
@@ -68,7 +71,21 @@ public class ViewCategory extends TabActivity {
     public boolean onCreateOptionsMenu(Menu menu){
     	MenuInflater menuinf = getMenuInflater();
     	menuinf.inflate(R.menu.menu, menu);
-   	
+    	//onBackPressed();
     	return true;
     }
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		onBackPressed();
+		return super.onOptionsItemSelected(item);
+	}
+    
 }

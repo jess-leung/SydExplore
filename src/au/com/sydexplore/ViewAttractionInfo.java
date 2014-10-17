@@ -85,6 +85,9 @@ public class ViewAttractionInfo extends Activity {
 		
 		//set the layout
 		setContentView(R.layout.activity_view_attraction_info);
+		
+		//set the back button in the action bar
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Get the data from the list of attractions screen
         name = getIntent().getStringExtra("attractionName");
@@ -237,6 +240,7 @@ public class ViewAttractionInfo extends Activity {
 	    public boolean onCreateOptionsMenu(Menu menu){
 	    	MenuInflater menuinf = getMenuInflater();
 	    	menuinf.inflate(R.menu.menu, menu);
+	    	
 	    	return true;
 	    }
 	
@@ -254,6 +258,7 @@ public class ViewAttractionInfo extends Activity {
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		onBackPressed();
 		return super.onOptionsItemSelected(item);
 	}
 	

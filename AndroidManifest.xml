@@ -45,7 +45,12 @@
         </activity>
         <activity
             android:name=".ViewCategory"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:parentActivityName="com.example.sydexplore.MainActivity" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+        	<meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="com.example.sydexplore.MainActivity" />
         </activity>
         <activity
             android:name=".ViewCategoryList"
@@ -57,7 +62,12 @@
         </activity>
         <activity
             android:name=".SubmitReview"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:parentActivityName="com.example.sydexplore.ViewAttractionInfo" >
+        	<!-- Parent activity meta-data to support 4.0 and lower -->
+        	<meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="com.example.sydexplore.ViewAttractionInfo" />
         </activity>
         <activity
             android:name=".SplashScreen"
@@ -70,7 +80,12 @@
         </activity>
         <activity
             android:name=".ViewAttractionInfo"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:parentActivityName="com.example.sydexplore.ViewCategory">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+        	<meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="com.example.sydexplore.ViewCategory" />
         </activity>
     </application>
 
