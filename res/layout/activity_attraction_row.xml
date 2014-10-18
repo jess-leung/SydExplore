@@ -28,13 +28,22 @@
         android:layout_weight="1"
         android:layout_marginRight="5dp" />
 
+    <ImageView
+        android:id="@+id/sydExploreIcon"
+        android:background="@drawable/sydexplorelogo"
+        android:layout_height="20dp"
+        android:layout_width="20dp" 
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_marginRight="10dp"/>
+    
     <TextView
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
-        android:layout_toRightOf="@id/thumbnail"
-        android:layout_marginRight="10dp" />
+        android:layout_toRightOf="@id/sydExploreIcon"
+        android:layout_marginRight="30dp" />
     
 	<TextView
         android:id="@+id/distance"
