@@ -53,15 +53,6 @@ public class ReviewAdapter extends ArrayAdapter{
 				holder.positionHolder = position;
 				Log.i("position",String.valueOf(holder.positionHolder));
 				view.setTag(holder);
-				
-				
-				
-				
-				
-				
-				
-				
-				
 			}else{
 				holder = (ViewHold) view.getTag();
 			}
@@ -118,6 +109,10 @@ public class ReviewAdapter extends ArrayAdapter{
 			  image="banknotes";
 			  colour=R.drawable.rebeccapurple;
 			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_rebeccapurple));
+		  } else if (category.equals("Fun")){
+			  image="star83";
+			  colour=R.drawable.not_so_electric_blue;
+			  holder.reviewCategory.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle_notsoelectricblue));
 		  }
 		  
 		  String uri = "@drawable/"+image; 
