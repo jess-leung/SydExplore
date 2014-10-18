@@ -158,8 +158,6 @@ public class MainActivity extends Activity {
      */
     public void displayAttractionPage(String categoryClickedOn){
      	
-    	Log.d("parameter",categoryClickedOn);
-    	
     	try {
 			sendJson(categoryClickedOn);
 		} catch (InterruptedException e) {
@@ -174,7 +172,7 @@ public class MainActivity extends Activity {
 			
 			int i;
 			int secondaryColor = 0;
-			for (i=0; i<10; i++){
+			for (i=0; i<categoryArray.size(); i++){
 				Category cat = categoryArray.get(i);
 				if (cat.getName().equals(categoryClickedOn)){
 					oldColor = cat.getColor();
