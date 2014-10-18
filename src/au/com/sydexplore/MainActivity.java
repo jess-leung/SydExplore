@@ -172,6 +172,12 @@ public class MainActivity extends Activity {
 			
 			int i;
 			int secondaryColor = 0;
+			
+			if (categoryClickedOn.equals("All")){
+				oldColor = 2130837637;
+				secondaryColor = 2130837638;
+			}
+			else {
 			for (i=0; i<categoryArray.size(); i++){
 				Category cat = categoryArray.get(i);
 				if (cat.getName().equals(categoryClickedOn)){
@@ -179,7 +185,7 @@ public class MainActivity extends Activity {
 					secondaryColor = cat.secondaryColor;
 				}
 			}
-			
+			}
 			intent.putExtra("primaryColor", oldColor);
 			intent.putExtra("secondaryColor", secondaryColor);
 			// brings up the second activity
