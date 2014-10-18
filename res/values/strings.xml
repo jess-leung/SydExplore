@@ -9,11 +9,13 @@
 	<string name="Adventurous">Adventurous</string>
 	<string name="Cultural">Cultural</string>
 	<string name="Education">Education</string>
-	<string name="Historical">Historical</string>
+	<string name="Fun">Fun</string>
+		<string name="Historical">Historical</string>
 	<string name="Hungry">Hungry</string>
 	<string name="Lazy">Lazy</string>
 	<string name="Luxurious">Luxurious</string>
 	<string name="Natural">Natural</string>
 	<string name="Social">Social</string>
+
 </resources>
 

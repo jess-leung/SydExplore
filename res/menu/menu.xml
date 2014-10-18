@@ -4,7 +4,7 @@
     <item android:id="@+id/All"
           android:icon="@drawable/international12"
           android:title="@string/All"/>
-    
+   
     <item android:id="@+id/Adventurous"
           android:icon="@drawable/trekking"
           android:title="@string/Adventurous" />
@@ -16,7 +16,11 @@
     <item android:id="@+id/Education"
           android:icon="@drawable/books30"
           android:title="@string/Education" />
-            
+
+    <item android:id="@+id/Fun"
+          android:icon="@drawable/star83"
+          android:title="@string/Fun"/>
+    
     <item android:id="@+id/Historical"
           android:icon="@drawable/time12"
           android:title="@string/Historical" />

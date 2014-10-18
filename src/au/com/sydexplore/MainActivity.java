@@ -110,6 +110,9 @@ public class MainActivity extends Activity {
     		case R.id.Education:
     			displayAttractionPage("Education");
     			return true;
+    		case R.id.Fun:
+    			displayAttractionPage("Fun");
+    			return true;
     		case R.id.Historical:
     			displayAttractionPage("Historical");
     			return true;
@@ -128,6 +131,7 @@ public class MainActivity extends Activity {
     		case R.id.Social:
     			displayAttractionPage("Social");
     			return true;
+
     	}
     	return false;
     	
@@ -154,6 +158,8 @@ public class MainActivity extends Activity {
      */
     public void displayAttractionPage(String categoryClickedOn){
      	
+    	Log.d("parameter",categoryClickedOn);
+    	
     	try {
 			sendJson(categoryClickedOn);
 		} catch (InterruptedException e) {
