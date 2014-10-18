@@ -5,25 +5,19 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/fragment_background">
-    
-        <LinearLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-        
+        android:layout_margin="20dp">
+
+       
     <LinearLayout
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent"
         android:orientation="vertical"
-		android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/white"
-        android:padding="15dp" >
+		android:background="@drawable/white"
+		android:padding="10dp">
     
     <TextView
         android:id="@+id/reviewTitle" 
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
      	android:layout_height="wrap_content"
      	android:textSize="30dp" 
      	android:layout_marginLeft="15dp"
@@ -52,7 +46,7 @@
     <TextView 
         android:id="@+id/reviewText"
         android:layout_below="@+id/reviewerName"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
      	android:layout_height="wrap_content" 
      	android:textSize="15dp"
      	android:padding="15dp"
@@ -62,7 +56,7 @@
     
     <Button
         android:id="@+id/closefragment"
-        android:layout_below="@+id/reviewRating"
+        android:layout_below="@+id/reviewText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Close Review"
@@ -70,5 +64,4 @@
     
 </LinearLayout>  
 
-</LinearLayout>
 </ScrollView> 
