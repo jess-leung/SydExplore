@@ -86,6 +86,6 @@ public class ViewCategory extends TabActivity {
 		}
 		onBackPressed();
 		return super.onOptionsItemSelected(item);
-	}
+	} 
     
 }
