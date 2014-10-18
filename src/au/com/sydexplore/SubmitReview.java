@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -146,16 +148,108 @@ public class SubmitReview extends Activity {
 		t.start();      
 	}
 	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		onBackPressed();
-		return super.onOptionsItemSelected(item);
-	}
+	
+	
+	   @Override
+	    public boolean onOptionsItemSelected(MenuItem menu){
+	    	super.onOptionsItemSelected(menu);
+
+	    	//back arrow
+	    	onBackPressed();
+	    	
+	    	String category="";
+	    	switch(menu.getItemId()){
+	    		case R.id.All:
+	    			displayAttractionPageFromSubmitReview("All");
+	    			return true;
+	    		case R.id.Adventurous:
+	    			displayAttractionPageFromSubmitReview("Adventurous");
+	    			return true;
+	    		case R.id.Cultural:
+	    			displayAttractionPageFromSubmitReview("Cultural");
+	    			return true;
+	    		case R.id.Education:
+	    			displayAttractionPageFromSubmitReview("Education");
+	    			return true;
+	    		case R.id.Fun:
+	    			displayAttractionPageFromSubmitReview("Fun");
+	    			return true;
+	    		case R.id.Historical:
+	    			displayAttractionPageFromSubmitReview("Historical");
+	    			return true;
+	    		case R.id.Hungry:
+	    			displayAttractionPageFromSubmitReview("Hungry");
+	    			return true;
+	    		case R.id.Lazy:
+	    			displayAttractionPageFromSubmitReview("Lazy");
+	    			return true;
+	    		case R.id.Luxurious:
+	    			displayAttractionPageFromSubmitReview("Luxurious");
+	    			return true;
+	    		case R.id.Natural:
+	    			displayAttractionPageFromSubmitReview("Natural");
+	    			return true;
+	    		case R.id.Social:
+	    			displayAttractionPageFromSubmitReview("Social");
+	    			return true;
+
+	    	}
+	    	return false;
+	    	
+
+	    }
+	    
+	    
+	    
+	    
+	   public void displayAttractionPageFromSubmitReview(String categoryClickedOn){
+		   
+
+		   
+		   try {
+				MainActivity.sendJson(categoryClickedOn);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	   	
+			Intent intent = new Intent(SubmitReview.this, ViewCategory.class); 
+			if (intent != null) { 
+				// put "extras" into the bundle for access in the edit activity
+				intent.putExtra("jsonString",MainActivity.jsonin); 
+				
+				int i;
+				int secondaryColor = 0;
+				
+				if (categoryClickedOn.equals("All")){
+					MainActivity.oldColor = MainActivity.allCategory;
+					secondaryColor = MainActivity.secAllCategory;
+				}
+				else {
+				for (i=0; i<MainActivity.categoryArray.size(); i++){
+					Category cat = MainActivity.categoryArray.get(i);
+					if (cat.getName().equals(categoryClickedOn)){
+						MainActivity.oldColor = cat.getColor();
+						secondaryColor = cat.secondaryColor;
+					}
+				}
+				}
+				intent.putExtra("primaryColor", MainActivity.oldColor);
+				intent.putExtra("secondaryColor", secondaryColor);
+				// brings up the second activity
+				startActivity(intent); 
+			} 
+	   	
+	   }
+		
+		
+	   @Override
+	    public boolean onCreateOptionsMenu(Menu menu){
+	    	MenuInflater menuinf = getMenuInflater();
+	    	menuinf.inflate(R.menu.menu, menu);
+	    	
+	    	return true;
+	    }
+	
+	
 }
