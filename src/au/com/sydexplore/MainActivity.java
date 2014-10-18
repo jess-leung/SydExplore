@@ -43,13 +43,17 @@ public class MainActivity extends Activity {
 	// List view for categories 
 	GridView categoriesList; 
 	// Array list containing the categories 
-	ArrayList<Category> categoryArray; 
+	static ArrayList<Category> categoryArray; 
 	// ArrayAdapter 
 	ArrayAdapter<String> categoriesAdapter;
 	static InputStream is = null;
     static String jsonin = "";
     View selectedView;
-    int oldColor; 
+    static int oldColor; 
+    
+    //colour for the 'all' attraction category page
+    static int allCategory = 2130837637;
+    static int secAllCategory = 2130837638;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,8 +178,8 @@ public class MainActivity extends Activity {
 			int secondaryColor = 0;
 			
 			if (categoryClickedOn.equals("All")){
-				oldColor = 2130837637;
-				secondaryColor = 2130837638;
+				oldColor = allCategory;
+				secondaryColor = secAllCategory;
 			}
 			else {
 			for (i=0; i<categoryArray.size(); i++){
@@ -234,7 +238,7 @@ public class MainActivity extends Activity {
      * @param category
      * @throws InterruptedException 
      */
-	private void sendJson(final String category) throws InterruptedException {
+	static void sendJson(final String category) throws InterruptedException {
 		Thread t = new Thread() {
 
 			public void run() {

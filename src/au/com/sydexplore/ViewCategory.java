@@ -75,17 +75,100 @@ public class ViewCategory extends TabActivity {
     	return true;
     }
     
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		onBackPressed();
-		return super.onOptionsItemSelected(item);
-	} 
+  
+	
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menu){
+    	super.onOptionsItemSelected(menu);
+    	
+    	//back arrow
+    	onBackPressed();
+    	
+    	String category="";
+    	switch(menu.getItemId()){
+    		case R.id.All:
+    			displayAttractionPageFromCategory("All");
+    			return true;
+    		case R.id.Adventurous:
+    			displayAttractionPageFromCategory("Adventurous");
+    			return true;
+    		case R.id.Cultural:
+    			displayAttractionPageFromCategory("Cultural");
+    			return true;
+    		case R.id.Education:
+    			displayAttractionPageFromCategory("Education");
+    			return true;
+    		case R.id.Fun:
+    			displayAttractionPageFromCategory("Fun");
+    			return true;
+    		case R.id.Historical:
+    			displayAttractionPageFromCategory("Historical");
+    			return true;
+    		case R.id.Hungry:
+    			displayAttractionPageFromCategory("Hungry");
+    			return true;
+    		case R.id.Lazy:
+    			displayAttractionPageFromCategory("Lazy");
+    			return true;
+    		case R.id.Luxurious:
+    			displayAttractionPageFromCategory("Luxurious");
+    			return true;
+    		case R.id.Natural:
+    			displayAttractionPageFromCategory("Natural");
+    			return true;
+    		case R.id.Social:
+    			displayAttractionPageFromCategory("Social");
+    			return true;
+
+    	}
+    	return false;
+    	
+
+    }
     
+    
+    
+    
+   public void displayAttractionPageFromCategory(String categoryClickedOn){
+	   
+	   try {
+			MainActivity.sendJson(categoryClickedOn);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+   	
+		Intent intent = new Intent(ViewCategory.this, ViewCategory.class); 
+		if (intent != null) { 
+			// put "extras" into the bundle for access in the edit activity
+			intent.putExtra("jsonString",MainActivity.jsonin); 
+			
+			int i;
+			int secondaryColor = 0;
+			
+			if (categoryClickedOn.equals("All")){
+				MainActivity.oldColor = MainActivity.allCategory;
+				secondaryColor = MainActivity.secAllCategory;
+			}
+			else {
+			for (i=0; i<MainActivity.categoryArray.size(); i++){
+				Category cat = MainActivity.categoryArray.get(i);
+				if (cat.getName().equals(categoryClickedOn)){
+					MainActivity.oldColor = cat.getColor();
+					secondaryColor = cat.secondaryColor;
+				}
+			}
+			}
+			intent.putExtra("primaryColor", MainActivity.oldColor);
+			intent.putExtra("secondaryColor", secondaryColor);
+			// brings up the second activity
+			startActivity(intent); 
+		} 
+   	
+   }
 }
+   
+    
+    
+	
+	

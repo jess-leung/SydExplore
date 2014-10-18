@@ -191,7 +191,7 @@ public class ViewCategoryList extends Activity {
 				
 				//get review details from the database
 				try{
-					sendJson(attractionName);
+					sendJsonReview(attractionName);
 				}
 					catch (InterruptedException e) {
 						e.printStackTrace();
@@ -221,7 +221,7 @@ public class ViewCategoryList extends Activity {
 	     * @param category
 	     * @throws InterruptedException 
 	     */
-		private void sendJson(final String attractionName) throws InterruptedException {
+		private void sendJsonReview(final String attractionName) throws InterruptedException {
 			Thread t = new Thread() {
 
 				public void run() {
