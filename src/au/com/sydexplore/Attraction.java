@@ -130,18 +130,34 @@ public class Attraction implements Serializable {
     	return thumbnailUrl;
     }
     
+    /**
+     * Return description of attraction 
+     * @return
+     */
     public String getDescription(){
     	return description;
     }
     
+    /**
+     * Return opening hours of attraction 
+     * @return
+     */
     public String getOpeninghours(){
     	return openingHours;
     }
     
+    /**
+     * Return URL of attraction
+     * @return
+     */
     public String getURL(){
     	return URL;
     }
     
+    /**
+     * Return image URL of attraction
+     * @return
+     */
     public String getImageURL(){
     	return image;
     }

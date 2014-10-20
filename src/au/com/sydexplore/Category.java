@@ -1,7 +1,5 @@
 package au.com.sydexplore; 
 
-import au.com.sydexplore.R.drawable;
-
 public class Category {
 	// name of attraction 
     public String name;
